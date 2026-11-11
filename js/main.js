@@ -115,10 +115,10 @@ document.addEventListener('click', () => {
 /* ─── SECTOR DATA ────────────────────────────────────────── */
 const SECTOR_DATA = {
   klinik: {
-    greeting:    'Merhaba! 👋 Kliniğimize hoş geldiniz. Size nasıl yardımcı olabilirim?',
-    buttons:     ['📅 Randevu Al', '💊 Tedavi Bilgisi', '💰 Fiyat Öğren'],
+    greeting:    'Merhaba! Kliniğimize hoş geldiniz. Size nasıl yardımcı olabilirim?',
+    buttons:     [' Randevu Al', ' Tedavi Bilgisi', ' Fiyat Öğren'],
     customerMsg: 'Konsültasyon için randevu almak istiyorum',
-    flowBadge:   '🗓️ RANDEVU FORMU',
+    flowBadge:   ' RANDEVU FORMU',
     flowCardTxt: 'Randevu almak için formu açınız...',
     formTitle:   'Randevu Bilgileri',
     formSub:     'Formu doldurun, hemen onaylayalım',
@@ -142,14 +142,14 @@ const SECTOR_DATA = {
     }
   },
   restoran: {
-    greeting:    'Merhaba! 👋 Hoş geldiniz. Bugün size nasıl yardımcı olabiliriz?',
-    buttons:     ['📅 Rezervasyon Al', '🍽️ Menüyü İncele', '📍 Konum & Saatler'],
+    greeting:    'Merhaba! Hoş geldiniz. Bugün size nasıl yardımcı olabiliriz?',
+    buttons:     [' Rezervasyon Al', ' Menüyü İncele', ' Konum & Saatler'],
     customerMsg: '4 kişilik masa istiyorum. Hangi saatler uygun?',
-    flowBadge:   '🍽️ REZERVASYON FORMU',
+    flowBadge:   ' REZERVASYON FORMU',
     flowCardTxt: 'Kişi sayısı, tarih ve saati seçin. Masanızı burada onaylayalım.',
     formTitle:   'Masa Rezervasyonu',
     formSub:     'Kişi sayısı ve saat seçin',
-    service:     '👥 4 Kişilik Masa',
+    service:     ' 4 Kişilik Masa',
     dates:       [['Paz','15'],['Pts','16'],['Sal','17'],['Çar','18']],
     times:       ['19:00','20:00','21:00'],
     btn:         'Rezervasyonu Onayla ✓',
@@ -169,10 +169,10 @@ const SECTOR_DATA = {
     }
   },
   guzellik: {
-    greeting:    'Merhaba! 👋 Salonumuza hoş geldiniz. Ne yapmak istersiniz?',
-    buttons:     ['📅 Seans Rezervasyonu', '💅 Hizmetlerimiz', '💰 Fiyat Listesi'],
+    greeting:    'Merhaba! Salonumuza hoş geldiniz. Ne yapmak istersiniz?',
+    buttons:     [' Seans Rezervasyonu', ' Hizmetlerimiz', ' Fiyat Listesi'],
     customerMsg: 'Saç boyama için seans randevusu istiyorum',
-    flowBadge:   '✂️ SEANS FORMU',
+    flowBadge:   ' SEANS FORMU',
     flowCardTxt: 'Güzellik seansı için formu açınız...',
     formTitle:   'Güzellik Seansı',
     formSub:     'Hizmet ve zamanınızı seçin',
@@ -196,14 +196,14 @@ const SECTOR_DATA = {
     }
   },
   servis: {
-    greeting:    'Merhaba! 👋 Servisimize hoş geldiniz. Aracınız için ne yapabiliriz?',
-    buttons:     ['🔧 Servis Randevusu', '🚗 Araç Sorgula', '💰 Fiyat Al'],
+    greeting:    'Merhaba! Servisimize hoş geldiniz. Aracınız için ne yapabiliriz?',
+    buttons:     [' Servis Randevusu', ' Araç Sorgula', ' Fiyat Al'],
     customerMsg: 'Aracım için bakım randevusu almak istiyorum',
-    flowBadge:   '🔧 SERVİS FORMU',
+    flowBadge:   ' SERVİS FORMU',
     flowCardTxt: 'Servis randevusu için formu açınız...',
     formTitle:   'Araç Kabul Formu',
     formSub:     'Bilgileri girin, randevu oluşturalım',
-    service:     'Periyodik Bakım — 15.000 km',
+    service:     'Periyodik Bakım, 15.000 km',
     dates:       [['Pts','16'],['Sal','17'],['Per','19'],['Cum','20']],
     times:       ['09:00','11:00','14:00'],
     btn:         'Randevuyu Onayla ✓',
@@ -223,14 +223,14 @@ const SECTOR_DATA = {
     }
   },
   emlak: {
-    greeting:    'Merhaba! 👋 Hoş geldiniz. Hayalinizdeki mülkü bulmak için buradayız!',
-    buttons:     ['🏠 Ziyaret Planla', '🔍 İlanları Gör', '📞 Danışmana Bağlan'],
+    greeting:    'Merhaba! Hoş geldiniz. Hayalinizdeki mülkü bulmak için buradayız!',
+    buttons:     [' Ziyaret Planla', ' İlanları Gör', ' Danışmana Bağlan'],
     customerMsg: 'Satılık 3+1 daire için bilgi almak istiyorum',
-    flowBadge:   '🏠 ZİYARET FORMU',
+    flowBadge:   ' ZİYARET FORMU',
     flowCardTxt: 'Gayrimenkul ziyareti için formu açınız...',
     formTitle:   'Ziyaret Randevusu',
     formSub:     'Tercih ve zamanınızı seçin',
-    service:     '3+1 Daire — Kadıköy',
+    service:     '3+1 Daire, Kadıköy',
     dates:       [['Sal','17'],['Çar','18'],['Per','19'],['Cum','20']],
     times:       ['11:00','14:00','16:00'],
     btn:         'Ziyareti Onayla ✓',
@@ -254,10 +254,10 @@ const SECTOR_DATA = {
 /* ─── SECTOR DATA (EN) ───────────────────────────────────── */
 const SECTOR_DATA_EN = {
   klinik: {
-    greeting:    'Hello! 👋 Welcome to our clinic. How can I help you?',
-    buttons:     ['📅 Book Appointment', '💊 Treatment Info', '💰 Get Prices'],
+    greeting:    'Hello! Welcome to our clinic. How can I help you?',
+    buttons:     [' Book Appointment', ' Treatment Info', ' Get Prices'],
     customerMsg: 'I\'d like to book a consultation',
-    flowBadge:   '🗓️ APPOINTMENT FORM',
+    flowBadge:   ' APPOINTMENT FORM',
     flowCardTxt: 'Please open the form to book...',
     formTitle:   'Appointment Details',
     formSub:     'Fill in the form, we\'ll confirm right away',
@@ -281,14 +281,14 @@ const SECTOR_DATA_EN = {
     }
   },
   restoran: {
-    greeting:    'Hello! 👋 Welcome. How can we help you today?',
-    buttons:     ['📅 Make Reservation', '🍽️ View Menu', '📍 Location & Hours'],
+    greeting:    'Hello! Welcome. How can we help you today?',
+    buttons:     [' Make Reservation', ' View Menu', ' Location & Hours'],
     customerMsg: 'A table for 4, please. What times are available?',
-    flowBadge:   '🍽️ RESERVATION FORM',
+    flowBadge:   ' RESERVATION FORM',
     flowCardTxt: 'Choose your party size, date and time. We’ll confirm your table here.',
     formTitle:   'Table Reservation',
     formSub:     'Select party size and time',
-    service:     '👥 Table for 4',
+    service:     ' Table for 4',
     dates:       [['Sun','15'],['Mon','16'],['Tue','17'],['Wed','18']],
     times:       ['19:00','20:00','21:00'],
     btn:         'Confirm Reservation ✓',
@@ -308,10 +308,10 @@ const SECTOR_DATA_EN = {
     }
   },
   guzellik: {
-    greeting:    'Hello! 👋 Welcome to our salon. What would you like?',
-    buttons:     ['📅 Book Session', '💅 Our Services', '💰 Price List'],
+    greeting:    'Hello! Welcome to our salon. What would you like?',
+    buttons:     [' Book Session', ' Our Services', ' Price List'],
     customerMsg: 'I\'d like to book a hair coloring session',
-    flowBadge:   '✂️ SESSION FORM',
+    flowBadge:   ' SESSION FORM',
     flowCardTxt: 'Please open the form to book your session...',
     formTitle:   'Beauty Session',
     formSub:     'Choose your service and time',
@@ -335,14 +335,14 @@ const SECTOR_DATA_EN = {
     }
   },
   servis: {
-    greeting:    'Hello! 👋 Welcome to our service center. How can we help your vehicle?',
-    buttons:     ['🔧 Book Service', '🚗 Vehicle Lookup', '💰 Get Quote'],
+    greeting:    'Hello! Welcome to our service center. How can we help your vehicle?',
+    buttons:     [' Book Service', ' Vehicle Lookup', ' Get Quote'],
     customerMsg: 'I\'d like to book a maintenance appointment',
-    flowBadge:   '🔧 SERVICE FORM',
+    flowBadge:   ' SERVICE FORM',
     flowCardTxt: 'Please open the form to book a service...',
     formTitle:   'Vehicle Intake Form',
     formSub:     'Enter details and we\'ll schedule your appointment',
-    service:     'Periodic Maintenance — 15,000 km',
+    service:     'Periodic Maintenance, 15,000 km',
     dates:       [['Mon','16'],['Tue','17'],['Thu','19'],['Fri','20']],
     times:       ['09:00','11:00','14:00'],
     btn:         'Confirm Appointment ✓',
@@ -362,14 +362,14 @@ const SECTOR_DATA_EN = {
     }
   },
   emlak: {
-    greeting:    'Hello! 👋 Welcome. We\'re here to help you find your dream property!',
-    buttons:     ['🏠 Schedule Viewing', '🔍 View Listings', '📞 Talk to Agent'],
+    greeting:    'Hello! Welcome. We\'re here to help you find your dream property!',
+    buttons:     [' Schedule Viewing', ' View Listings', ' Talk to Agent'],
     customerMsg: 'I\'d like info on a 3-bedroom apartment for sale',
-    flowBadge:   '🏠 VIEWING FORM',
+    flowBadge:   ' VIEWING FORM',
     flowCardTxt: 'Please open the form to schedule a viewing...',
     formTitle:   'Viewing Appointment',
     formSub:     'Choose your preferences and time',
-    service:     '3-Bed Apartment — Kadıköy',
+    service:     '3 bedroom Apartment, Kadıköy',
     dates:       [['Tue','17'],['Wed','18'],['Thu','19'],['Fri','20']],
     times:       ['11:00','14:00','16:00'],
     btn:         'Confirm Viewing ✓',
@@ -382,8 +382,8 @@ const SECTOR_DATA_EN = {
       ],
       section: 'Today\'s Viewings',
       rows: [
-        { name: 'Michael Brown',  time: '11:00 · 3-Bed Kadıköy',   badge: 'Confirmed', dot: 'dot-g', bg: 'bg-g' },
-        { name: 'Jessica Miller', time: '14:00 · 2-Bed Beşiktaş',  badge: 'Confirmed', dot: 'dot-g', bg: 'bg-g' },
+        { name: 'Michael Brown',  time: '11:00 · 3 bedroom Kadıköy',   badge: 'Confirmed', dot: 'dot-g', bg: 'bg-g' },
+        { name: 'Jessica Miller', time: '14:00 · 2 bedroom Beşiktaş',  badge: 'Confirmed', dot: 'dot-g', bg: 'bg-g' },
         { name: 'Daniel Clark',   time: '16:00 · Apt. Ataşehir',   badge: 'Pending',   dot: 'dot-y', bg: 'bg-y' },
       ]
     }
@@ -576,9 +576,9 @@ class HeroPhone {
     if (s0) {
       s0.querySelector('.wa-bg').innerHTML = this.whatsappShell(`
         <div class="wa-day">${isEn ? 'Today' : 'Bugün'}</div>
-        <div class="wa-encrypted">${isEn ? 'End-to-end encrypted · Illustrative demo' : 'Uçtan uca şifreli · Örnek demo'}</div>
+        <div class="wa-encrypted">${isEn ? 'End to end encrypted · Illustrative demo' : 'Uçtan uca şifreli · Örnek demo'}</div>
         <div class="msg msg-o" data-chat="request"><span>${request}</span><div class="msg-t">19:02 <span class="wa-ticks">✓</span></div></div>
-        <div class="msg msg-i wa-booking-card" data-chat="form"><div class="wa-card-icon">▦</div><strong>${d.formTitle}</strong><p>${isEn ? 'Add your details and confirm your booking, right here.' : 'Bilgilerinizi ekleyin ve burada onaylayın.'}</p><button type="button" class="wa-card-action">${isEn ? 'Complete booking' : 'Rezervasyonu tamamla'} <span>↗</span></button><div class="msg-t">19:03</div></div>
+        <div class="msg msg-i wa-booking-card" data-chat="form"><div class="wa-card-icon">▦</div><strong>${d.formTitle}</strong><p>${isEn ? 'Add your details and confirm your booking, right here.' : 'Bilgilerinizi ekleyin ve burada onaylayın.'}</p><button type="button" class="wa-card-action">${isEn ? 'Complete booking' : 'Rezervasyonu tamamla'} <span><svg class="inline-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></button><div class="msg-t">19:03</div></div>
         <div class="typing-bubble wa-typing" aria-hidden="true"><i class="t-dot"></i><i class="t-dot"></i><i class="t-dot"></i></div>`,isEn);
     }
 

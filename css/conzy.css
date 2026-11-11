@@ -765,3 +765,34 @@ h1 { text-align:center; }
  .hero-inner { max-width:1280px; }
  .hero-visual { max-width:1200px;box-shadow:0 0 0 1px rgba(218,239,192,.8),0 0 38px rgba(130,173,87,.2),inset 0 0 30px rgba(238,252,217,.4); }
 }
+
+/* SVG arrows avoid platform-dependent emoji glyphs in the hero buttons. */
+.hero-actions .btn { gap:12px; }
+.hero-actions .btn>span { margin:0; }
+.button-arrow { display:block;width:18px;height:18px;flex:0 0 18px; }
+
+.feat-icon .site-icon,.ch-icon .site-icon { width:24px;height:24px;display:block;flex-shrink:0; }
+.wa-mic .site-icon { width:17px;height:17px; }
+
+.inline-arrow { display:inline-block;vertical-align:middle;flex-shrink:0; }
+.note-icon .inline-arrow { display:block; }
+/* A matching edge glow for the header CTA. */
+#nav .nav-cta {
+ border:1px solid rgba(188,223,151,.65);
+ box-shadow:0 0 0 1px rgba(208,235,178,.3),0 0 15px rgba(133,179,85,.3),inset 0 0 8px rgba(195,226,157,.1);
+}
+#nav .nav-cta:hover { box-shadow:0 0 0 1px rgba(208,235,178,.6),0 0 22px rgba(133,179,85,.45),inset 0 0 10px rgba(195,226,157,.14); }
+.header-on-dark #nav .nav-cta { box-shadow:0 0 0 1px rgba(215,244,181,.6),0 0 20px rgba(191,224,143,.3); }
+#hero { padding-top:124px; }
+@media(max-width:768px) {
+ #hero { padding-top:100px; }
+ .hero-copy {
+  min-height:calc(100vh - 100px);
+  min-height:calc(100svh - 100px);
+  display:flex;flex-direction:column;align-items:stretch;
+  padding-bottom:24px;
+ }
+ .hero-actions { margin-top:auto; }
+ .hero-tag { flex-shrink:0; }
+ .hero-inner { gap:38px; }
+}
