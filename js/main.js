@@ -405,6 +405,18 @@ class HeroPhone {
 
     if (!this.screens.length) return;
     this.buildControls();
+    this.demoVisible = !document.getElementById('live-demo');
+    const demoSection = document.getElementById('live-demo');
+    if (demoSection) {
+      this.visibilityObserver = new IntersectionObserver(entries => {
+        const visible = entries[0].isIntersecting;
+        if (visible === this.demoVisible) return;
+        this.demoVisible = visible;
+        if (visible) this.goTo(this.current);
+        else this.clearTimers();
+      }, { threshold: 0.12 });
+      this.visibilityObserver.observe(demoSection);
+    }
     this.switchSector('restoran');
 
     // Sector tab switching
@@ -440,6 +452,8 @@ class HeroPhone {
     document.querySelector('.demo-replay').addEventListener('click', () => this.goTo(0));
     document.querySelector('.hero-screen-area').addEventListener('click',event => {
       if (event.target.closest('.wa-card-action')) this.goTo(1);
+      if (event.target.closest('.flow-close')) this.goTo(0);
+      if (event.target.closest('.flow-btn-gr')) this.goTo(2);
     });
   }
 
@@ -462,7 +476,7 @@ class HeroPhone {
   }
 
   schedule() {
-    if (this.paused) return;
+    if (this.paused || !this.demoVisible) return;
     this.nextTimer = setTimeout(() => this.goTo((this.current+1) % this.screens.length),this.durations[this.current]);
   }
 
@@ -524,6 +538,9 @@ class HeroPhone {
     el.querySelectorAll('[data-count]').forEach(c => { c.textContent = '0'; });
     // Remove highlights
     el.querySelectorAll('.flow-val.hl').forEach(v => v.classList.remove('hl'));
+    el.querySelectorAll('.flow-outlined.is-focused').forEach(v => v.classList.remove('is-focused'));
+    const flowBody = el.querySelector('.flow-body');
+    if (flowBody) flowBody.scrollTop = 0;
   }
 
   after(ms, fn) {
@@ -565,42 +582,25 @@ class HeroPhone {
         <div class="typing-bubble wa-typing" aria-hidden="true"><i class="t-dot"></i><i class="t-dot"></i><i class="t-dot"></i></div>`,isEn);
     }
 
-    // ── Update pscreen-1 flow form content ──
-    const s1 = document.getElementById('pscreen-1');
-    if (s1) {
-      const barT = s1.querySelector('.flow-bar-t');
-      if (barT) barT.textContent = d.buttons[0];
-
-      const h1 = s1.querySelector('.flow-h1');
-      if (h1) h1.textContent = d.formTitle;
-
-      const sub = s1.querySelector('.flow-sub');
-      if (sub) sub.textContent = d.formSub;
-
-      const svc = s1.querySelector('.flow-val-svc');
-      if (svc) svc.innerHTML = `${d.service} <span style="color:#999;font-size:9px">▼</span>`;
-
-      const dateRows = s1.querySelectorAll('.date-row');
-      if (dateRows[0]) {
-        const chips = dateRows[0].querySelectorAll('.date-chip');
-        d.dates.forEach((pair, i) => {
-          if (chips[i]) chips[i].innerHTML = `${pair[0]}<br><b>${pair[1]}</b>`;
-        });
-      }
-      if (dateRows[1]) {
-        const chips = dateRows[1].querySelectorAll('.date-chip');
-        d.times.forEach((t, i) => { if (chips[i]) chips[i].textContent = t; });
-      }
-
-      const btn = s1.querySelector('.flow-btn-gr');
-      if (btn) btn.textContent = d.btn;
-    }
-
+    // A full-screen WhatsApp Flow: outlined fields and a persistent footer action.
     const name = isEn ? 'Alex Morgan' : 'Deniz Kaya';
-    if (s1) {
-      s1.querySelector('.flow-val-name').textContent = name;
-      s1.querySelectorAll('.flow-lbl')[1].textContent = key === 'restoran' ? (isEn ? 'PARTY SIZE' : 'KİŞİ SAYISI') : (isEn ? 'SERVICE' : 'HİZMET');
-    }
+    const s1 = document.getElementById('pscreen-1');
+    const cleanService = d.service.replace(/^[^\p{L}\p{N}]+/u, '');
+    const flowStatus = document.querySelector('#pscreen-0 .phone-sb').outerHTML.replace('phone-sb-dark','phone-sb-light');
+    s1.innerHTML = flowStatus + `<div class="flow-scr">
+      <div class="flow-bar"><button type="button" class="flow-close" aria-label="${isEn ? 'Close booking form' : 'Rezervasyon formunu kapat'}">×</button><div class="flow-bar-t">${d.formTitle}</div><span class="flow-options" aria-hidden="true">···</span></div>
+      <div class="flow-body">
+        <div class="flow-business-label">CONZY <span>· ${isEn ? 'Booking form' : 'Rezervasyon formu'}</span></div>
+        <div class="flow-heading-group"><div class="flow-h1">${restaurant ? (isEn ? 'Reserve your table' : 'Masanızı ayırtın') : d.formTitle}</div><div class="flow-sub">${isEn ? 'A few details and you’re all set.' : 'Birkaç bilgiyle işleminizi tamamlayın.'}</div></div>
+        <div class="flow-field flow-outlined"><div class="flow-lbl">${isEn ? 'Full name' : 'Ad ve soyad'}</div><div class="flow-val flow-val-name">${name}</div></div>
+        <div class="flow-field flow-outlined"><div class="flow-lbl">${restaurant ? (isEn ? 'Number of guests' : 'Kişi sayısı') : (isEn ? 'Service' : 'Hizmet')}</div><div class="flow-val flow-val-svc"><span>${cleanService}</span><span class="flow-chevron" aria-hidden="true">⌄</span></div></div>
+        <div class="flow-field flow-date-field"><div class="flow-lbl">${isEn ? 'Choose a date' : 'Tarih seçin'}</div><div class="date-row">${d.dates.map(([day,date])=>`<div class="date-chip"><span>${day}</span><b>${date}</b></div>`).join('')}</div></div>
+        <div class="flow-field flow-time-field"><div class="flow-lbl">${isEn ? 'Available times' : 'Uygun saatler'}</div><div class="date-row">${d.times.map(time=>`<div class="date-chip time-chip">${time}</div>`).join('')}</div></div>
+        <div class="flow-inline-note">${isEn ? 'Your confirmation will arrive in this chat.' : 'Onayınız bu sohbet üzerinden gönderilir.'}</div>
+      </div>
+      <div class="flow-footer"><div class="flow-summary">${cleanService}<span>${d.dates[1][0]} ${d.dates[1][1]} · ${d.times[1]}</span></div><button type="button" class="flow-btn-gr">${isEn ? 'Confirm booking' : 'Rezervasyonu onayla'}</button><div class="flow-footer-note">${isEn ? 'Managed by Conzy · Inside WhatsApp' : 'Conzy tarafından yönetilir · WhatsApp içinde'}</div></div>
+    </div>`;
+
     const confirmation = document.getElementById('pscreen-2');
     const statusBar = document.querySelector('#pscreen-0 .phone-sb').outerHTML;
     confirmation.innerHTML = statusBar + `<div class="wa-bg">${this.whatsappShell(`
@@ -614,49 +614,28 @@ class HeroPhone {
     const note = document.querySelector('.note-top strong');
     if (note) note.textContent = key === 'restoran' ? (isEn ? 'Table reserved' : 'Masa rezerve edildi') : (isEn ? 'Booking confirmed' : 'Randevu onaylandı');
 
-    // ── Update pscreen-2 (dashboard) ──
-    const s2 = document.getElementById('pscreen-3');
-    if (s2 && d.dash) {
-      s2.querySelector('.dash-d').textContent = isEn ? 'Illustrative demo · Live booking overview' : 'Örnek demo · Rezervasyon özeti';
-      const cards = s2.querySelectorAll('.dash-card');
-      d.dash.stats.forEach((stat, i) => {
-        const card = cards[i];
-        if (!card) return;
-        const val   = card.querySelector('.dash-val');
-        const lbl   = card.querySelector('.dash-lbl');
-        const trend = card.querySelector('.dash-trend');
-        if (val) {
-          if (stat.count !== undefined) {
-            val.dataset.count = stat.count;
-            if (stat.suffix !== undefined) val.dataset.suffix = stat.suffix;
-            val.textContent = '0';
-          } else {
-            delete val.dataset.count;
-            val.textContent = stat.text || '';
-          }
-        }
-        if (lbl)   lbl.textContent   = stat.label;
-        if (trend) trend.textContent = stat.trend;
-      });
-
-      const sec = s2.querySelector('.dash-sec');
-      if (sec) sec.textContent = d.dash.section;
-
-      const rows = s2.querySelectorAll('.dash-row');
-      d.dash.rows.forEach((row, i) => {
-        const el = rows[i];
-        if (!el) return;
-        const dot   = el.querySelector('.dash-dot');
-        const name  = el.querySelector('.dash-rn');
-        const time  = el.querySelector('.dash-rt');
-        const badge = el.querySelector('.dash-badge');
-        if (dot)   dot.className        = 'dash-dot ' + row.dot;
-        if (name)  name.textContent     = i === 0 ? (isEn ? 'Alex Morgan' : 'Deniz Kaya') : row.name;
-        if (time)  time.textContent     = i === 0 ? `${d.times[1]} · ${d.service}` : row.time;
-        if (badge) { badge.textContent  = row.badge; badge.className = 'dash-badge ' + row.bg; }
-        el.classList.remove('show');
-      });
-    }
+    // Step four mirrors the restaurant dashboard previews and the booking just made.
+    const dashboard = document.getElementById('pscreen-3');
+    const bookingCount = restaurant ? 24 : d.dash.stats[1].count;
+    const noun = restaurant ? (isEn ? 'Reservations today' : 'Bugünkü rezervasyonlar') : (isEn ? 'Bookings today' : 'Bugünkü randevular');
+    const secondLabel = restaurant ? (isEn ? 'Expected guests' : 'Beklenen misafirler') : (isEn ? 'Customer enquiries' : 'Müşteri soruları');
+    dashboard.innerHTML = `<div class="phone-sb phone-sb-light"><span class="psb-time">9:41</span><div class="psb-di"></div><span class="mini-signal" aria-hidden="true">▮▮▮</span></div>
+      <div class="mini-dashboard">
+        <div class="mini-dashboard-header"><strong>Conzy</strong><span>${isEn ? 'Business overview' : 'İşletme özeti'}</span><small>${isEn ? 'DEMO' : 'ÖRNEK'}</small></div>
+        <div class="mini-dashboard-body">
+          <div class="mini-overline">${isEn ? 'TODAY AT A GLANCE' : 'BUGÜNE GENEL BAKIŞ'}</div>
+          <div class="mini-metrics"><div><span>${noun}</span><strong>${bookingCount}</strong><small>${isEn ? 'Including your new booking' : 'Yeni rezervasyon dahil'}</small></div><div><span>${secondLabel}</span><strong>${restaurant ? 64 : d.dash.stats[0].count}</strong><small>${isEn ? 'Illustrative sample data' : 'Örnek veriler'}</small></div></div>
+          <div class="mini-booking" data-anim><div class="mini-booking-top"><span>${isEn ? 'NEW WHATSAPP BOOKING' : 'YENİ WHATSAPP REZERVASYONU'}</span><b>✓ ${isEn ? 'Confirmed' : 'Onaylandı'}</b></div>
+            <h3>${name}</h3><p>${d.service}</p>
+            <div class="mini-booking-facts"><div><small>${isEn ? 'DATE' : 'TARİH'}</small><strong>${d.dates[1][0]} ${d.dates[1][1]}</strong></div><div><small>${isEn ? 'TIME' : 'SAAT'}</small><strong>${d.times[1]}</strong></div>${restaurant ? `<div><small>${isEn ? 'TABLE' : 'MASA'}</small><strong>04</strong></div>` : ''}</div>
+          </div>
+          <div class="mini-activity-title">${isEn ? 'Handled automatically' : 'Otomatik tamamlananlar'}</div>
+          <div class="mini-activity" data-anim><i>✓</i><div><strong>${isEn ? 'Booking saved' : 'Rezervasyon kaydedildi'}</strong><span>${isEn ? 'Available in your team’s dashboard' : 'Ekibinizin paneline eklendi'}</span></div></div>
+          <div class="mini-activity" data-anim><i>✓</i><div><strong>${isEn ? 'Confirmation delivered' : 'Onay iletildi'}</strong><span>WhatsApp · ${isEn ? 'Customer notified' : 'Müşteri bilgilendirildi'}</span></div></div>
+          <div class="mini-activity" data-anim><i>✓</i><div><strong>${restaurant ? (isEn ? 'Menu PDF delivered' : 'Menü PDF dosyası iletildi') : (isEn ? 'Booking details delivered' : 'Randevu bilgileri iletildi')}</strong><span>${isEn ? 'Sent in the same conversation' : 'Aynı sohbet içinde gönderildi'}</span></div></div>
+          <div class="mini-dashboard-footer"><span class="live-dot"></span>${isEn ? 'Your team has the full picture.' : 'Tüm detaylar ekibinizin elinde.'}</div>
+        </div>
+      </div>`;
 
     // Restart the narrative after sector or language changes.
     this.goTo(0);
@@ -735,18 +714,21 @@ class HeroPhone {
     // Highlight name field
     this.after(800, () => {
       const name = screen.querySelector('.flow-val-name');
-      if (name) name.classList.add('hl');
+      if (name) { name.classList.add('hl'); name.closest('.flow-outlined')?.classList.add('is-focused'); }
     });
     // Highlight service
     this.after(1700, () => {
       const svc = screen.querySelector('.flow-val-svc');
-      if (svc) svc.classList.add('hl');
+      if (svc) { screen.querySelectorAll('.is-focused').forEach(el=>el.classList.remove('is-focused')); svc.classList.add('hl'); svc.closest('.flow-outlined')?.classList.add('is-focused'); }
     });
     // Select date chip
     this.after(2600, () => {
+      screen.querySelectorAll('.is-focused').forEach(el=>el.classList.remove('is-focused'));
       const chips = screen.querySelectorAll('.date-chip');
       chips.forEach(c => c.classList.remove('sel'));
-      if (chips[1]) chips[1].classList.add('sel'); // "Çar 21"
+      if (chips[1]) chips[1].classList.add('sel');
+      const body = screen.querySelector('.flow-body');
+      if (body) body.scrollTop = body.scrollHeight;
     });
     // Select time chip
     this.after(3600, () => {
@@ -761,18 +743,10 @@ class HeroPhone {
     });
   }
 
-  /* Dashboard sequence */
+  /* Reveal the actual outcome of the customer conversation in the new dashboard. */
   runDashSequence(screen) {
-    // Count up numbers
-    this.after(300, () => {
-      screen.querySelectorAll('[data-count]').forEach(el => {
-        this.countUp(el, parseInt(el.dataset.count), 1800);
-      });
-    });
-    // Show rows with stagger
-    const rows = screen.querySelectorAll('.dash-row');
-    rows.forEach((row, i) => {
-      this.after(1800 + i * 700, () => row.classList.add('show'));
+    screen.querySelectorAll('[data-anim]').forEach((item,index) => {
+      this.after(300 + index * 700, () => this.showAnim(item));
     });
   }
 

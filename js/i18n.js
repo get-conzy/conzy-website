@@ -5,6 +5,34 @@
 
 const LANGS = {
   tr: {
+    'hero-benefit-title': 'Daha az iş yükü. Müşterilerinize daha çok zaman.',
+    'hero-benefit-description': 'Sorular, rezervasyonlar ve takip mesajları tek bir sohbette yönetilir.',
+    'landing-eyebrow': 'WhatsApp, işletmeniz için çalışıyor',
+    'landing-h1': 'Her merhaba.<br><em>Yeni bir fırsat.</em>',
+    'landing-description': 'İlk sorudan onaylanan rezervasyona kadar WhatsApp sohbetlerinizi Conzy yönetir. Siz işletmenizle ilgilenin.',
+    'landing-primary': 'Conzy ile tanışın <span>↗</span>',
+    'landing-secondary': 'Nasıl çalıştığını görün <span>↓</span>',
+    'landing-reassurance': 'İşletmeniz. Sizin üslubunuz. Günün her saatinde.',
+    'landing-status': 'Her zaman yanında.',
+    'landing-story-label': 'Tek mesaj. Her şey yolunda.',
+    'landing-customer': 'Müşteriniz yazıyor',
+    'landing-request': '“Merhaba, bu akşam için masa ayırtabilir miyim?”',
+    'landing-confirmed': 'Rezervasyonunuz tamam.',
+    'landing-booking': '4 kişi · 20:00',
+    'landing-saved': 'İşletme paneline kaydedildi',
+    'landing-story-bottom': 'Harika bir ilk izlenim.<br>İşiniz bölünmeden.',
+    'landing-example': 'Örnek sohbet',
+    'landing-capability-1': 'Soruları yanıtlayın.',
+    'landing-capability-2': 'Rezervasyonları alın.',
+    'landing-capability-3': 'İletişimi sürdürün.',
+    'live-demo-tag': 'Conzy’yi çalışırken görün',
+    'live-demo-title': 'İlk mesajdan<br><em>onaylanan rezervasyona.</em>',
+    'live-demo-description': 'Sektörünüzü seçin ve örnek bir müşteri yolculuğunu izleyin. Tüm bilgiler WhatsApp içinde, adım adım tamamlanır.',
+    'live-demo-point-1': 'Müşteriniz sohbeti başlatır.',
+    'live-demo-point-2': 'Conzy bilgileri toplar ve rezervasyonu onaylar.',
+    'live-demo-point-3': 'Ekibiniz tüm detayları tek panelde görür.',
+    'live-demo-contact': 'İşletmenize nasıl uyarlayacağımızı konuşalım <span>↗</span>',
+
     'dashboard-overview-tab': 'Rezervasyon özeti',
     'dashboard-tables-tab': 'Masa planı ve takvim',
     'dashboard-preview-note': 'Örnek verilerle ürün önizlemesi. Tam boyutta incelemek için görsele tıklayın.',
@@ -27,7 +55,7 @@ const LANGS = {
     'hero-btn-demo'   : 'Demo İste <span>→</span>',
     'hero-btn-how'    : 'Nasıl Çalışır?',
     'sector-tabs-label': 'Sektöre göre inceleyin',
-    'sector-tabs-description': 'Conzy’nin işletmenizin rezervasyonlarını nasıl yönettiğini görün.',
+    'sector-tabs-description': 'WhatsApp rezervasyon demosunu görmek için bir sektör seçin.',
     'st-klinik'       : 'Klinik',
     'st-restoran'     : 'Restoran',
     'st-guzellik'     : 'Güzellik',
@@ -248,6 +276,34 @@ const LANGS = {
   },
 
   en: {
+    'hero-benefit-title': 'Less admin. More time for your customers.',
+    'hero-benefit-description': 'Answers, bookings and follow-ups handled in one conversation.',
+    'landing-eyebrow': 'WhatsApp, working for you',
+    'landing-h1': 'Every hello.<br><em>A new opportunity.</em>',
+    'landing-description': 'From the first question to the confirmed booking, Conzy takes care of your WhatsApp conversations. You take care of your business.',
+    'landing-primary': 'Meet Conzy <span>↗</span>',
+    'landing-secondary': 'Watch it work <span>↓</span>',
+    'landing-reassurance': 'Your business. Your voice. Available around the clock.',
+    'landing-status': 'On it. Always.',
+    'landing-story-label': 'One message. Everything taken care of.',
+    'landing-customer': 'A customer writes',
+    'landing-request': '“Hi, can I book a table for tonight?”',
+    'landing-confirmed': 'Consider it booked.',
+    'landing-booking': '4 guests · 20:00',
+    'landing-saved': 'Saved to your dashboard',
+    'landing-story-bottom': 'A great first impression.<br>Without another interruption.',
+    'landing-example': 'Illustrative conversation',
+    'landing-capability-1': 'Answer the questions.',
+    'landing-capability-2': 'Take the bookings.',
+    'landing-capability-3': 'Keep the conversation going.',
+    'live-demo-tag': 'See Conzy in action',
+    'live-demo-title': 'From first message<br><em>to confirmed booking.</em>',
+    'live-demo-description': 'Choose your industry and follow a real-world customer journey. All inside WhatsApp, with every detail carried through.',
+    'live-demo-point-1': 'Your customer starts the conversation.',
+    'live-demo-point-2': 'Conzy collects the details and confirms the booking.',
+    'live-demo-point-3': 'Your team gets the full picture in one dashboard.',
+    'live-demo-contact': 'Let’s make it work for your business <span>↗</span>',
+
     'dashboard-overview-tab': 'Reservation overview',
     'dashboard-tables-tab': 'Table plan & schedule',
     'dashboard-preview-note': 'Product preview with sample data. Select the image to inspect it at full size.',
@@ -270,7 +326,7 @@ const LANGS = {
     'hero-btn-demo'   : 'Meet your assistant <span>↗</span>',
     'hero-btn-how'    : 'See how it works ↗',
     'sector-tabs-label': 'Explore by industry',
-    'sector-tabs-description': 'See how Conzy handles bookings for your business.',
+    'sector-tabs-description': 'Select an industry to see its WhatsApp booking demo.',
     'st-klinik'       : 'Clinic',
     'st-restoran'     : 'Restaurant',
     'st-guzellik'     : 'Beauty',
@@ -591,49 +647,6 @@ function renderPscreens() {
       const fbtn = bot2.querySelector('div[style]'); if (fbtn) fbtn.textContent = chat.formBtn;
     }
     const inp = s0.querySelector('.wa-inp'); if (inp) inp.textContent = chat.inp;
-  }
-
-  /* — Screen 1: Flow — */
-  const s1 = document.getElementById('pscreen-1');
-  if (s1) {
-    const fbarT = s1.querySelector('.flow-bar-t'); if (fbarT) fbarT.textContent = flow.barTitle;
-    const fh1 = s1.querySelector('.flow-h1'); if (fh1) fh1.textContent = flow.title;
-    const fsub = s1.querySelector('.flow-sub'); if (fsub) fsub.textContent = flow.sub;
-    const lbls = s1.querySelectorAll('.flow-lbl');
-    if (lbls[0]) lbls[0].textContent = flow.lblName;
-    if (lbls[1]) lbls[1].textContent = flow.lblSvc;
-    if (lbls[2]) lbls[2].textContent = flow.lblDate;
-    if (lbls[3]) lbls[3].textContent = flow.lblTime;
-    const valName = s1.querySelector('.flow-val-name'); if (valName) valName.firstChild.textContent = flow.valName;
-    const valSvc  = s1.querySelector('.flow-val-svc');  if (valSvc)  valSvc.firstChild.textContent  = flow.valSvc;
-    const chips   = s1.querySelectorAll('.date-chip:not(.time-chip)');
-    flow.dates.forEach((d, i) => {
-      if (chips[i]) chips[i].innerHTML = d + '<br><b>' + flow.dateDays[i] + '</b>';
-    });
-    const tChips = s1.querySelectorAll('.time-chip');
-    flow.times.forEach((tm, i) => { if (tChips[i]) tChips[i].textContent = tm; });
-    const fbtn = s1.querySelector('.flow-btn-gr'); if (fbtn) fbtn.textContent = flow.btn;
-  }
-
-  /* — Screen 2: Dashboard — */
-  const s2 = document.getElementById('pscreen-3');
-  if (s2) {
-    const dt = s2.querySelector('.dash-t'); if (dt) dt.textContent = dash.title;
-    const dd = s2.querySelector('.dash-d'); if (dd) dd.textContent = dash.date;
-    const lbls = s2.querySelectorAll('.dash-lbl');
-    [dash.lbl1, dash.lbl2, dash.lbl3, dash.lbl4].forEach((l, i) => { if (lbls[i]) lbls[i].textContent = l; });
-    const sec = s2.querySelector('.dash-sec'); if (sec) sec.textContent = dash.section;
-    const rows = s2.querySelectorAll('.dash-row');
-    dash.rows.forEach((r, i) => {
-      if (!rows[i]) return;
-      const dot = rows[i].querySelector('.dash-dot');
-      dot.className = 'dash-dot ' + r.dotCls;
-      rows[i].querySelector('.dash-rn').textContent = r.name;
-      rows[i].querySelector('.dash-rt').textContent = r.time;
-      const badge = rows[i].querySelector('.dash-badge');
-      badge.className = 'dash-badge ' + r.badgeCls;
-      badge.textContent = r.badge;
-    });
   }
 
   /* Re-apply active sector in the new language so sector-specific text
