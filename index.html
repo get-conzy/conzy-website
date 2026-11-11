@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F7F8F2">
+  <title>Conzy — İşletmenizin 7/24 WhatsApp Asistanı</title>
+  <meta name="description" content="Yapay zeka destekli WhatsApp chatbot ve otomasyon sistemi. Klinikler, salonlar ve işletmeler için 7/24 otomatik müşteri yönetimi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css?v=dashboard-preview-11">
+  <link rel="stylesheet" href="css/conzy.css?v=dashboard-preview-11">
+</head>
+<body>
+<a class="skip-link" href="#hero">Skip to content</a>
+
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- ══════════════════════════ MOBILE HEADER ══════════════════════════ -->
+<header id="mobile-header">
+  <div class="mobile-lang-dd" id="mobile-lang-dd">
+    <button class="mobile-lang-trigger" id="mobile-lang-trigger">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span class="js-lang-current">TR</span>
+      <svg class="lang-chevron" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="mobile-lang-menu" id="mobile-lang-menu">
+      <button class="lang-opt" data-lang="tr">🇹🇷 Türkçe</button>
+      <button class="lang-opt" data-lang="en">🇬🇧 English</button>
+    </div>
+  </div>
+  <a href="#" class="mobile-logo"><div class="logo-mark"></div>Conzy</a>
+  <button class="hamburger" id="hamburger" aria-label="Menü" data-i18n-aria="hamburger-aria">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ══════════════════════════ MOBILE MENU ══════════════════════════ -->
+<nav id="mobile-menu">
+  <div class="mmenu-top">
+    <a href="#" class="mmenu-logo"><div class="logo-mark"></div>Conzy</a>
+    <button class="mmenu-close" id="mmenu-close" aria-label="Kapat" data-i18n-aria="mmenu-close-aria">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="mmenu-links">
+    <a href="#flow-pipeline" data-i18n="nav-features">Özellikler</a>
+    <a href="#sectors" data-i18n="nav-sectors">Sektörler</a>
+    <a href="#pricing" data-i18n="nav-pricing">Fiyatlar</a>
+  </div>
+  <div class="mmenu-bottom">
+    <a href="#contact" class="mmenu-cta" data-i18n="nav-cta">Demo İste →</a>
+  </div>
+</nav>
+<div id="mobile-overlay"></div>
+
+<!-- ══════════════════════════ HERO LOGO ══════════════════════════ -->
+<a href="#" class="hero-logo" id="hero-logo"><div class="logo-mark"></div>Conzy</a>
+
+<!-- ══════════════════════════ LANG TOGGLE ══════════════════════════ -->
+<div class="lang-dd" id="lang-dd">
+  <button class="lang-trigger" id="lang-trigger">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <span id="lang-current" class="js-lang-current">TR</span>
+    <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
+  <div class="lang-menu" id="lang-menu">
+    <button class="lang-opt" data-lang="tr">🇹🇷 Türkçe</button>
+    <button class="lang-opt" data-lang="en">🇬🇧 English</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ NAV ══════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <ul class="nav-links">
+      <li><a href="#flow-pipeline" data-i18n="nav-features">Özellikler</a></li>
+      <li><a href="#sectors" data-i18n="nav-sectors">Sektörler</a></li>
+      <li><a href="#pricing" data-i18n="nav-pricing">Fiyatlar</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta" data-i18n="nav-cta">Demo İste →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+<section id="hero">
+  <div class="hero-inner">
+
+    <!-- Centered copy -->
+    <div class="hero-copy">
+      <div class="hero-tag"><div class="hero-tag-line"></div><span data-i18n="hero-tag">WhatsApp Otomasyon</span></div>
+      <h1 data-i18n="hero-h1">Müşteriniz Yazar,<br><em>Sistem</em> Halleder</h1>
+      <p class="hero-desc" data-i18n="hero-desc">
+        Yapay zeka destekli WhatsApp chatbot ve otomasyon sistemi. Randevu alın, teklif gönderin, müşteri sorularını otomatik yanıtlayın — 7/24, hiç durmadan.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-orange" data-i18n="hero-btn-demo">Demo İste <span>→</span></a>
+        <a href="#flow-pipeline" class="btn btn-ghost" data-i18n="hero-btn-how">Nasıl Çalışır?</a>
+      </div>
+
+      <!-- Sector switcher — changes the phone demo live -->
+      <div class="hero-sector-tabs" id="hero-sector-tabs">
+        <span class="sector-tabs-label" data-i18n="sector-tabs-label">Sektöre göre inceleyin</span>
+        <p class="sector-tabs-description" data-i18n="sector-tabs-description">Sektörünüzün rezervasyon akışını önizleyin.</p>
+        <div class="sector-tabs-row" role="group" aria-label="Industry demos">
+          <button class="sector-tab" data-sector="klinik"><span data-i18n="st-klinik">Klinik</span></button>
+          <button class="sector-tab active" data-sector="restoran"><span data-i18n="st-restoran">Restoran</span></button>
+          <button class="sector-tab" data-sector="guzellik"><span data-i18n="st-guzellik">Güzellik</span></button>
+          <button class="sector-tab" data-sector="servis"><span data-i18n="st-servis">Oto Servis</span></button>
+          <button class="sector-tab" data-sector="emlak"><span data-i18n="st-emlak">Gayrimenkul</span></button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: real hand-holding-phone photo with animated screen overlay -->
+    <div class="hero-visual">
+      <div class="demo-controls"><div class="demo-step-label"></div><p class="demo-step-description"></p><div class="demo-navigation"><div class="demo-steps" aria-label="Demo steps"></div><button type="button" class="demo-pause"></button><button type="button" class="demo-replay"></button></div></div>
+      <div class="scene-caption"><span class="live-dot"></span><span data-i18n="scene-label">Your business, on autopilot</span><span class="scene-spark" aria-hidden="true">✳</span></div>
+      <div class="scene-orbit" aria-hidden="true"></div>
+      <div class="scene-note note-top"><span class="note-icon" aria-hidden="true">↗</span><div><strong data-i18n="scene-booked">Appointment booked</strong><span data-i18n="scene-sync">Calendar updated automatically</span></div></div>
+      <div class="scene-note note-bottom"><span class="note-icon" aria-hidden="true">✓</span><div><strong data-i18n="scene-online">Always here for your customers</strong><span data-i18n="scene-hours">Even after closing time.</span></div></div>
+      <!--
+        Aspect-ratio box trick: padding-top = (1056/976)*100 = 108.2%
+        This forces the wrapper to have the exact same height as the image
+        at any width, so every "position:absolute + %" inside is reliable.
+        Image fills the box with object-fit:fill (no cropping needed —
+        wrapper and image share the same 976:1056 ratio).
+      -->
+      <div style="position:relative;width:100%;">
+        <div class="hero-img-wrap">
+
+          <!-- The hand+phone photo fills the aspect-ratio box -->
+          <img src="hand1.jpg" alt="" aria-hidden="true" class="hero-hand-img">
+
+          <!--
+            hand1.jpg: 948×1059
+            Screen left x=207, right x=602, top y=68, bottom y=934
+            Dynamic Island center x=405 (x=350–461 at y=85)
+            top    = 68  / 1059 = 6.4%
+            left   = 207 / 948  = 21.8%
+            width  = 395 / 948  = 41.7%
+            height = 866 / 1059 = 81.8%
+          -->
+          <div class="hero-screen-area" style="position:absolute;top:6.4%;left:21.8%;width:41.7%;height:81.8%;
+                      border-radius:33px;overflow:hidden;">
+
+          <!-- Screen 0: WhatsApp Chat -->
+          <div class="pscreen active" id="pscreen-0">
+            <div class="phone-sb phone-sb-dark">
+              <span class="psb-time">9:41</span>
+              <div class="psb-di"></div>
+              <div class="psb-icons">
+                <svg width="13" height="10" viewBox="0 0 13 10" fill="currentColor"><rect x="0" y="6.5" width="2.5" height="3.5" rx=".5"/><rect x="3.5" y="4" width="2.5" height="6" rx=".5"/><rect x="7" y="2" width="2.5" height="8" rx=".5"/><rect x="10.5" y="0" width="2.5" height="10" rx=".5"/></svg>
+                <svg width="13" height="10" viewBox="0 0 13 10" fill="currentColor"><circle cx="6.5" cy="9" r="1.4"/><path d="M3.3 6.7C4.2 5.8 5.3 5.3 6.5 5.3s2.3.5 3.2 1.4l1.1-1.1C9.5 4.3 8.1 3.6 6.5 3.6S3.5 4.3 2.2 5.6z"/><path d="M1 4.5C2.3 3.1 4.3 2.2 6.5 2.2s4.2.9 5.5 2.3L13 3.4C11.3 1.7 9 .7 6.5.7S1.7 1.7 0 3.4z" opacity=".5"/></svg>
+                <svg width="22" height="10" viewBox="0 0 22 10" fill="currentColor"><rect x=".5" y=".5" width="18" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M20 3.5v3a1.5 1.5 0 0 0 0-3z"/><rect x="2" y="2" width="13" height="6" rx="1.5"/></svg>
+              </div>
+            </div>
+            <div class="wa-bg">
+              <div class="wa-bar">
+                <div class="wa-av">C</div>
+                <div>
+                  <div class="wa-nm">Conzy</div>
+                  <div class="wa-st">çevrimiçi</div>
+                </div>
+              </div>
+              <div class="wa-msgs">
+                <div class="msg msg-i" data-anim>
+                  Merhaba! 👋 Nasıl yardımcı olabilirim?
+                  <div class="msg-btns">
+                    <div class="msg-btn" data-anim>📅 Randevu Al</div>
+                    <div class="msg-btn" data-anim>💰 Fiyat Öğren</div>
+                    <div class="msg-btn" data-anim>ℹ️ Bilgi Al</div>
+                  </div>
+                  <div class="msg-t">09:41</div>
+                </div>
+                <div class="msg msg-o" data-anim>
+                  Randevu almak istiyorum
+                  <div class="msg-t">09:42 ✓✓</div>
+                </div>
+                <div class="msg msg-i" data-anim>
+                  <span style="color:#25D366;font-weight:700;font-size:9px;display:block;margin-bottom:4px">🗓️ RANDEVU FORMU</span>
+                  Randevu almak için formu açınız...
+                  <div style="background:#25D366;color:#fff;border-radius:6px;padding:5px;font-size:10px;font-weight:700;text-align:center;margin-top:6px">Formu Aç →</div>
+                  <div class="msg-t">09:42</div>
+                </div>
+              </div>
+              <div class="wa-inp-bar">
+                <div class="wa-inp">Mesaj yazın...</div>
+                <div class="wa-mic">🎙</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 1: WhatsApp Flow — Randevu -->
+          <div class="pscreen" id="pscreen-1">
+            <div class="phone-sb phone-sb-dark">
+              <span class="psb-time">9:41</span>
+              <div class="psb-di"></div>
+              <div class="psb-icons">
+                <svg width="13" height="10" viewBox="0 0 13 10" fill="currentColor"><rect x="0" y="6.5" width="2.5" height="3.5" rx=".5"/><rect x="3.5" y="4" width="2.5" height="6" rx=".5"/><rect x="7" y="2" width="2.5" height="8" rx=".5"/><rect x="10.5" y="0" width="2.5" height="10" rx=".5"/></svg>
+                <svg width="13" height="10" viewBox="0 0 13 10" fill="currentColor"><circle cx="6.5" cy="9" r="1.4"/><path d="M3.3 6.7C4.2 5.8 5.3 5.3 6.5 5.3s2.3.5 3.2 1.4l1.1-1.1C9.5 4.3 8.1 3.6 6.5 3.6S3.5 4.3 2.2 5.6z"/><path d="M1 4.5C2.3 3.1 4.3 2.2 6.5 2.2s4.2.9 5.5 2.3L13 3.4C11.3 1.7 9 .7 6.5.7S1.7 1.7 0 3.4z" opacity=".5"/></svg>
+                <svg width="22" height="10" viewBox="0 0 22 10" fill="currentColor"><rect x=".5" y=".5" width="18" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M20 3.5v3a1.5 1.5 0 0 0 0-3z"/><rect x="2" y="2" width="13" height="6" rx="1.5"/></svg>
+              </div>
+            </div>
+            <div class="flow-scr">
+              <div class="flow-bar">
+                <div class="flow-back">←</div>
+                <div class="flow-bar-t">📅 Randevu Al</div>
+              </div>
+              <div class="flow-body">
+                <div class="flow-h1">Randevu Bilgileri</div>
+                <div class="flow-sub">Formu doldurun, hemen onaylayalım</div>
+                <div class="flow-field">
+                  <div class="flow-lbl">Adınız Soyadınız</div>
+                  <div class="flow-val flow-val-name">Ahmet Yılmaz</div>
+                </div>
+                <div class="flow-field">
+                  <div class="flow-lbl">Hizmet</div>
+                  <div class="flow-val flow-val-svc">Saç Ekimi Konsültasyon <span style="color:#999;font-size:9px">▼</span></div>
+                </div>
+                <div class="flow-field">
+                  <div class="flow-lbl">Tarih</div>
+                  <div class="date-row">
+                    <div class="date-chip">Sal<br><b>20</b></div>
+                    <div class="date-chip">Çar<br><b>21</b></div>
+                    <div class="date-chip">Per<br><b>22</b></div>
+                    <div class="date-chip">Cum<br><b>23</b></div>
+                  </div>
+                </div>
+                <div class="flow-field">
+                  <div class="flow-lbl">Saat</div>
+                  <div class="date-row">
+                    <div class="date-chip time-chip">10:00</div>
+                    <div class="date-chip time-chip">11:30</div>
+                    <div class="date-chip time-chip">14:00</div>
+                  </div>
+                </div>
+                <div class="flow-btn-gr">Randevuyu Onayla ✓</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pscreen" id="pscreen-2">
+  <div class="confirmation-screen">
+    <div class="confirmation-brand">Conzy <span>✓</span></div>
+    <div class="confirmation-check" aria-hidden="true">✓</div>
+    <h3 class="confirmation-title"></h3>
+    <p class="confirmation-intro"></p>
+    <div class="confirmation-details"><strong class="confirmation-name"></strong><span class="confirmation-service"></span><span class="confirmation-date"></span></div>
+    <div class="confirmation-delivered"></div>
+    <p class="confirmation-footer"></p>
+  </div>
+</div>
+
+<!-- Screen 3: Dashboard -->
+          <div class="pscreen" id="pscreen-3">
+            <div class="phone-sb phone-sb-light">
+              <span class="psb-time">9:41</span>
+              <div class="psb-di"></div>
+              <div class="psb-icons">
+                <svg width="13" height="10" viewBox="0 0 13 10" fill="currentColor"><rect x="0" y="6.5" width="2.5" height="3.5" rx=".5"/><rect x="3.5" y="4" width="2.5" height="6" rx=".5"/><rect x="7" y="2" width="2.5" height="8" rx=".5"/><rect x="10.5" y="0" width="2.5" height="10" rx=".5"/></svg>
+                <svg width="13" height="10" viewBox="0 0 13 10" fill="currentColor"><circle cx="6.5" cy="9" r="1.4"/><path d="M3.3 6.7C4.2 5.8 5.3 5.3 6.5 5.3s2.3.5 3.2 1.4l1.1-1.1C9.5 4.3 8.1 3.6 6.5 3.6S3.5 4.3 2.2 5.6z"/><path d="M1 4.5C2.3 3.1 4.3 2.2 6.5 2.2s4.2.9 5.5 2.3L13 3.4C11.3 1.7 9 .7 6.5.7S1.7 1.7 0 3.4z" opacity=".5"/></svg>
+                <svg width="22" height="10" viewBox="0 0 22 10" fill="currentColor"><rect x=".5" y=".5" width="18" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M20 3.5v3a1.5 1.5 0 0 0 0-3z"/><rect x="2" y="2" width="13" height="6" rx="1.5"/></svg>
+              </div>
+            </div>
+            <div class="dash-scr">
+              <div class="dash-bar">
+                <div class="dash-t">📊 Canlı Dashboard</div>
+                <div class="dash-d">21 Mayıs 2026</div>
+              </div>
+              <div class="dash-body">
+                <div class="dash-grid">
+                  <div class="dash-card">
+                    <div class="dash-val" data-count="47">0</div>
+                    <div class="dash-lbl">Bugün mesaj</div>
+                    <div class="dash-trend">↑ %23</div>
+                  </div>
+                  <div class="dash-card">
+                    <div class="dash-val" data-count="12">0</div>
+                    <div class="dash-lbl">Randevu</div>
+                    <div class="dash-trend">↑ %8</div>
+                  </div>
+                  <div class="dash-card">
+                    <div class="dash-val" data-count="91" data-suffix="%">0</div>
+                    <div class="dash-lbl">Otomasyon</div>
+                    <div class="dash-trend">✓ hedef</div>
+                  </div>
+                  <div class="dash-card">
+                    <div class="dash-val">3s</div>
+                    <div class="dash-lbl">Ort. yanıt</div>
+                    <div class="dash-trend">✓</div>
+                  </div>
+                </div>
+                <div class="dash-sec">Bugünkü Randevular</div>
+                <div class="dash-list">
+                  <div class="dash-row">
+                    <div class="dash-dot dot-g"></div>
+                    <div class="dash-ri">
+                      <div class="dash-rn">Ayşe Demir</div>
+                      <div class="dash-rt">10:00 · Konsültasyon</div>
+                    </div>
+                    <div class="dash-badge bg-g">Onaylı</div>
+                  </div>
+                  <div class="dash-row">
+                    <div class="dash-dot dot-y"></div>
+                    <div class="dash-ri">
+                      <div class="dash-rn">Emre Çelik</div>
+                      <div class="dash-rt">11:30 · FUE Saç</div>
+                    </div>
+                    <div class="dash-badge bg-y">Bekliyor</div>
+                  </div>
+                  <div class="dash-row">
+                    <div class="dash-dot dot-g"></div>
+                    <div class="dash-ri">
+                      <div class="dash-rn">Fatma Kaya</div>
+                      <div class="dash-rt">14:00 · Kaş Ekimi</div>
+                    </div>
+                    <div class="dash-badge bg-g">Onaylı</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /screen overlay -->
+
+
+      </div>
+    </div><!-- /hero-visual -->
+
+  </div><!-- /hero-inner -->
+</section>
+
+<!-- ══════════════════════════ MARQUEE ══════════════════════════ -->
+<div id="marquee">
+  <div class="marquee-track" role="marquee" aria-label="Conzy özellik bandı" data-i18n-aria="marquee-track-aria">
+    <div class="marquee-item">İnteraktif Formlar <span class="ms">·</span> AI Intent Algılama <span class="ms">·</span> Canlı Dashboard <span class="ms">·</span> 7/24 Aktif <span class="ms">·</span> Randevu Otomasyonu <span class="ms">·</span> KVKK Uyumlu <span class="ms">·</span> Türkçe Destek <span class="ms">·</span> Kurulum Dahil <span class="ms">·</span></div>
+    <div class="marquee-item" aria-hidden="true">İnteraktif Formlar <span class="ms">·</span> AI Intent Algılama <span class="ms">·</span> Canlı Dashboard <span class="ms">·</span> 7/24 Aktif <span class="ms">·</span> Randevu Otomasyonu <span class="ms">·</span> KVKK Uyumlu <span class="ms">·</span> Türkçe Destek <span class="ms">·</span> Kurulum Dahil <span class="ms">·</span></div>
+    <div class="marquee-item" aria-hidden="true">İnteraktif Formlar <span class="ms">·</span> AI Intent Algılama <span class="ms">·</span> Canlı Dashboard <span class="ms">·</span> 7/24 Aktif <span class="ms">·</span> Randevu Otomasyonu <span class="ms">·</span> KVKK Uyumlu <span class="ms">·</span> Türkçe Destek <span class="ms">·</span> Kurulum Dahil <span class="ms">·</span></div>
+    <div class="marquee-item" aria-hidden="true">İnteraktif Formlar <span class="ms">·</span> AI Intent Algılama <span class="ms">·</span> Canlı Dashboard <span class="ms">·</span> 7/24 Aktif <span class="ms">·</span> Randevu Otomasyonu <span class="ms">·</span> KVKK Uyumlu <span class="ms">·</span> Türkçe Destek <span class="ms">·</span> Kurulum Dahil <span class="ms">·</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ STATS ══════════════════════════ -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stat fu">
+      <div class="stat-n">7/24</div>
+      <div class="stat-l" data-i18n="stat-1">Kesintisiz aktif çalışır</div>
+    </div>
+    <div class="stat fu">
+      <div class="stat-n" data-i18n="stat-2-n">%100</div>
+      <div class="stat-l" data-i18n="stat-2">Özelleştirilmiş çözüm</div>
+    </div>
+    <div class="stat fu">
+      <div class="stat-n">%95</div>
+      <div class="stat-l" data-i18n="stat-3">Mesaj otomasyon oranı</div>
+    </div>
+    <div class="stat fu">
+      <div class="stat-n" data-i18n="stat-4-n">Sınırsız</div>
+      <div class="stat-l" data-i18n="stat-4">Otomasyon senaryosu sayısı</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FLOW PIPELINE ══════════════════════ -->
+<section id="flow-pipeline" class="section dark">
+  <div class="inner">
+
+    <div class="center fu" style="margin-bottom:72px">
+      <div class="tag" style="color:var(--orange)" data-i18n="pipe-tag">Nasıl Çalışır</div>
+      <h2 style="color:#fff" data-i18n="pipe-h2">Müşteri yazar, sistem<br><em>saniyeler içinde</em> halleder</h2>
+      <p class="sec-desc" style="color:rgba(255,255,255,.5);margin:0 auto" data-i18n="pipe-desc">Müşteriniz WhatsApp'tan çıkmadan interaktif form doldurur, randevu alır, rezervasyon yapar, teklif ister — 7/24, siz uyurken de.</p>
+    </div>
+
+    <div class="pipe-row">
+
+      <div class="pipe-card fu">
+        <div class="pipe-step-n">01</div>
+        <div class="pipe-icon-box pipe-wa">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9 9 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.126 1.529 5.862L.057 23.59a.5.5 0 0 0 .614.63l5.912-1.521A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.29-1.517l-.378-.225-3.914 1.006 1.043-3.802-.247-.393A9.955 9.955 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        </div>
+        <h4 class="pipe-title" data-i18n="pipe-1-h">Müşteri yazar</h4>
+        <p class="pipe-desc" data-i18n="pipe-1-p">WhatsApp'tan gelen her mesaj — kısa, uzun, yazım hatalı — sisteme anında ulaşır.</p>
+      </div>
+
+      <div class="pipe-arrow fu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <div class="pipe-card fu">
+        <div class="pipe-step-n">02</div>
+        <div class="pipe-icon-box pipe-ai">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-1v1a4 4 0 0 1-8 0v-1H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1V6a4 4 0 0 1 4-4z"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/></svg>
+        </div>
+        <h4 class="pipe-title" data-i18n="pipe-2-h">AI 3sn'de algılar</h4>
+        <p class="pipe-desc" data-i18n="pipe-2-p">Yapay zeka mesajın amacını anlar. Randevu mu, fiyat mı, bilgi mi? Otomatik yönlendirir.</p>
+      </div>
+
+      <div class="pipe-arrow fu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <div class="pipe-card fu">
+        <div class="pipe-step-n">03</div>
+        <div class="pipe-icon-box pipe-flow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
+        </div>
+        <h4 class="pipe-title" data-i18n="pipe-3-h">İnteraktif form açılır</h4>
+        <p class="pipe-desc" data-i18n="pipe-3-p">Müşteri WhatsApp'ın içinde interaktif formu doldurur. Dış link yok, uygulama değişmiyor.</p>
+      </div>
+
+      <div class="pipe-arrow fu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <div class="pipe-card pipe-card-done fu">
+        <div class="pipe-step-n">04</div>
+        <div class="pipe-icon-box pipe-done">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4 class="pipe-title" data-i18n="pipe-4-h">Otomatik kaydedilir</h4>
+        <p class="pipe-desc" data-i18n="pipe-4-p">Randevu oluşur, onay gider, takvime işlenir. Siz sadece dashboard'dan takip edersiniz.</p>
+      </div>
+
+    </div><!-- /pipe-row -->
+
+    <!-- <div class="pipe-highlight-bar fu">
+      <span class="phb-pill" data-i18n="phb-pill">Rakiplerin sunamadığı özellik</span>
+      <p data-i18n="phb-text">Müşteri WhatsApp'tan hiç çıkmaz — dış link yok, browser açılmıyor. Dönüşüm oranı standart yönlendirmeli sistemlere kıyasla çok daha yüksek.</p>
+    </div> -->
+
+  </div>
+</section>
+
+<!-- ══════════════════════ DASHBOARD ══════════════════════ -->
+<section id="dashboard-section" class="section bg2">
+  <div class="inner db-inner">
+
+    <div class="db-copy">
+      <div class="tag fu" data-i18n="db-tag">Canlı Dashboard</div>
+      <h2 class="fu" data-i18n="db-h2">Tüm operasyonunuz<br><em>tek ekranda</em></h2>
+      <p class="db-lead fu" data-i18n="db-lead">Gelen mesajlar, randevular, doluluk oranı — hepsi anlık olarak takibinizde. Karar almak için rapor beklemenize gerek yok.</p>
+
+      <div class="db-points">
+        <div class="db-point fu">
+          <div class="db-dot"></div>
+          <div>
+            <strong data-i18n="db-p1-h">Canlı randevu takvimi</strong>
+            <p data-i18n="db-p1-p">Günlük ve haftalık görünüm. Kimin ne zaman geleceğini tek bakışta görün.</p>
+          </div>
+        </div>
+        <div class="db-point fu">
+          <div class="db-dot"></div>
+          <div>
+            <strong data-i18n="db-p2-h">Anlık istatistikler</strong>
+            <p data-i18n="db-p2-p">Bugünkü rezervasyon sayısı, doluluk oranı ve ortalama yanıt süresi.</p>
+          </div>
+        </div>
+        <div class="db-point fu">
+          <div class="db-dot"></div>
+          <div>
+            <strong data-i18n="db-p3-h">Rezervasyon detayları</strong>
+            <p data-i18n="db-p3-p">Her rezervasyonun müşteri bilgisi, notu ve durumu tek panelde.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="db-visual fu">
+      <div class="dashboard-view-controls" role="group" aria-label="Dashboard preview views">
+        <button class="dashboard-view-button active" type="button" data-dashboard-view="overview" aria-pressed="true" data-i18n="dashboard-overview-tab">Rezervasyon özeti</button>
+        <button class="dashboard-view-button" type="button" data-dashboard-view="tables" aria-pressed="false" data-i18n="dashboard-tables-tab">Masa planı ve takvim</button>
+      </div>
+      <div class="db-screens">
+        <div class="db-screen db-screen-1 is-active" data-dashboard-panel="overview">
+          <div class="db-chrome"><span></span><span></span><span></span></div>
+          <a class="dashboard-image-link" href="assets/dashboard-overview-tr.svg" target="_blank" rel="noopener">
+            <img src="assets/dashboard-overview-tr.svg" width="1360" height="860" data-dashboard-image="overview" alt="Conzy rezervasyon özeti önizlemesi" data-i18n-alt="dashboard-1-alt">
+          </a>
+        </div>
+        <div class="db-screen db-screen-2" data-dashboard-panel="tables" hidden>
+          <div class="db-chrome"><span></span><span></span><span></span></div>
+          <a class="dashboard-image-link" href="assets/dashboard-tables-tr.svg" target="_blank" rel="noopener">
+            <img src="assets/dashboard-tables-tr.svg" width="1360" height="860" data-dashboard-image="tables" alt="Conzy masa planı ve rezervasyon takvimi önizlemesi" data-i18n-alt="dashboard-2-alt">
+          </a>
+        </div>
+      </div>
+      <p class="dashboard-preview-note" data-i18n="dashboard-preview-note">Örnek verilerle ürün önizlemesi. Tam boyutta incelemek için görsele tıklayın.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ══════════════════════ FEATURES ══════════════════════ -->
+<section class="section white">
+  <div class="inner">
+    <div class="fu">
+      <div class="tag" data-i18n="feat-tag">Özellikler</div>
+      <h2 data-i18n="feat-h2">Rakiplerinizden sizi<br><em>ayıran</em> teknoloji</h2>
+      <p class="sec-desc" data-i18n="feat-desc">Global SaaS araçlarının sunamadığı sektöre özel çözümler, Türkçe destek ve tam özelleştirme.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card fu">
+        <div class="feat-icon">🤖</div>
+        <h3>AI Intent Detection</h3>
+        <p data-i18n="feat-1-p">Gelen mesajın amacını yapay zeka otomatik algılar ve doğru akışa yönlendirir. Türkçe ve İngilizce destekli.</p>
+      </div>
+      <div class="feat-card fu">
+        <div class="feat-icon">📱</div>
+        <h3 data-i18n="feat-2-h">İnteraktif Formlar</h3>
+        <p data-i18n="feat-2-p">Müşteri WhatsApp'tan çıkmadan interaktif form doldurur. Randevu, teklif, ön değerlendirme — hepsi tek akışta.</p>
+      </div>
+      <div class="feat-card fu">
+        <div class="feat-icon">📅</div>
+        <h3 data-i18n="feat-3-h">Canlı Takvim</h3>
+        <p data-i18n="feat-3-p">Randevular otomatik takvime işlenir. Günlük, haftalık görünüm. Kimin ne zaman geleceğini tek bakışta görün.</p>
+      </div>
+      <div class="feat-card fu">
+        <div class="feat-icon">🔒</div>
+        <h3 data-i18n="feat-4-h">KVKK Uyumlu</h3>
+        <p data-i18n="feat-4-p">Tüm veriler AB sunucularında işlenir. KVKK ve GDPR gerekliliklerine tam uyumlu. Veri sahipliği sizde.</p>
+      </div>
+      <div class="feat-card fu">
+        <div class="feat-icon">⚡</div>
+        <h3 data-i18n="feat-5-h">Kurulum Dahil</h3>
+        <p data-i18n="feat-5-p">Meta Business API başvurusundan canlı yayına kadar her şey sizin adınıza. 7–10 gün içinde hazır.</p>
+      </div>
+      <div class="feat-card fu">
+        <div class="feat-icon">🎯</div>
+        <h3 data-i18n="feat-6-h">Tek Muhatap</h3>
+        <p data-i18n="feat-6-p">Sorun olduğunda call center değil, sizi tanıyan bir kişiyi arıyorsunuz. Otomasyon güncellemeleriniz 24 saatte yapılır.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ HOW IT WORKS ══════════════════════ -->
+<section class="section bg2">
+  <div class="inner">
+    <div class="center fu" style="margin-bottom:80px">
+      <div class="tag" data-i18n="how-tag">Süreç</div>
+      <h2 data-i18n="how-h2">3 adımda<br><em>canlıya</em> geçin</h2>
+      <p class="sec-desc" data-i18n="how-desc">Başvurudan canlı yayına ortalama 7–10 gün. Siz işinize bakın, biz halledelim.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step fu">
+        <div class="how-n">01</div>
+        <h3 data-i18n="how-1-h">Keşif &amp; Kurulum</h3>
+        <p data-i18n="how-1-p">İş süreçlerinizi anlıyoruz. Meta Business API başvurusunu sizin adınıza yapıyoruz. WhatsApp numaranızı sisteme bağlıyoruz.</p>
+      </div>
+      <div class="how-step fu">
+        <div class="how-n">02</div>
+        <h3 data-i18n="how-2-h">Özelleştirme &amp; Test</h3>
+        <p data-i18n="how-2-p">Sektörünüze özel otomasyonları ayarlıyoruz. Mesajları, randevu sistemini, teklif formunu yapılandırıyoruz. Canlı test yapıyoruz.</p>
+      </div>
+      <div class="how-step fu">
+        <div class="how-n">03</div>
+        <h3 data-i18n="how-3-h">Canlı Yayın &amp; Destek</h3>
+        <p data-i18n="how-3-p">Sistemi yayına alıyoruz, dashboard erişimi veriyoruz. Aylık performans raporu ve öncelikli destek ile yanınızdayız.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ SECTORS ══════════════════════ -->
+<section id="sectors" class="section white">
+  <div class="inner">
+    <div class="fu">
+      <div class="tag" data-i18n="sec-tag">Sektörler</div>
+      <h2 data-i18n="sec-h2">Her sektöre özel<br><em>hazır çözümler</em></h2>
+      <p class="sec-desc" data-i18n="sec-desc">Genel amaçlı değil — işinize özgü.</p>
+    </div>
+    <div class="sec-grid">
+
+      <div class="sec-card fu">
+        <div class="sec-icon si-klinik">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/>
+          </svg>
+        </div>
+        <h4 data-i18n="sec-1-h">Özel Klinik &amp; Hastane</h4><p data-i18n="sec-1-p">Randevu, ön değerlendirme, hatırlatma mesajı</p>
+      </div>
+
+      <div class="sec-card fu">
+        <div class="sec-icon si-beauty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.937A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.964 0z"/>
+            <path d="M20 3v4M22 5h-4"/>
+          </svg>
+        </div>
+        <h4 data-i18n="sec-2-h">Güzellik &amp; Estetik</h4><p data-i18n="sec-2-p">Seans rezervasyonu, danışma formu, tedavi akışı</p>
+      </div>
+
+      <div class="sec-card fu">
+        <div class="sec-icon si-resto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 2v7c0 1.1.9 2 2 2s2-.9 2-2V2"/><path d="M7 2v20"/>
+            <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
+          </svg>
+        </div>
+        <h4 data-i18n="sec-3-h">Restoran</h4><p data-i18n="sec-3-p">Rezervasyon, masa yönetimi, sipariş akışı</p>
+      </div>
+
+      <div class="sec-card fu">
+        <div class="sec-icon si-auto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/>
+            <circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>
+            <path d="M5 9l2-5h10l2 5"/>
+          </svg>
+        </div>
+        <h4 data-i18n="sec-4-h">Otomotiv Servisi</h4><p data-i18n="sec-4-p">Araç kabul formu, servis durumu, randevu</p>
+      </div>
+
+      <div class="sec-card fu">
+        <div class="sec-icon si-realty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/>
+            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
+            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
+            <path d="M10 6h4M10 10h4M10 14h4M10 18h4"/>
+          </svg>
+        </div>
+        <h4 data-i18n="sec-5-h">Gayrimenkul</h4><p data-i18n="sec-5-p">İlan sorgulama, ziyaret randevusu, danışman yönlendirme</p>
+      </div>
+
+      <div class="sec-card fu">
+        <div class="sec-icon si-legal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"/>
+            <path d="M2 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"/>
+            <path d="M7 21H17"/><path d="M12 3v18"/>
+            <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>
+          </svg>
+        </div>
+        <h4 data-i18n="sec-6-h">Hukuk &amp; Danışmanlık</h4><p data-i18n="sec-6-p">Ön başvuru formu, müvekkil kabulü</p>
+      </div>
+
+      <div class="sec-card fu">
+        <div class="sec-icon si-edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <h4 data-i18n="sec-7-h">Eğitim Kurumu</h4><p data-i18n="sec-7-p">Kayıt formu, bilgi talebi, hatırlatma</p>
+      </div>
+
+      <div class="sec-card fu">
+        <div class="sec-icon si-ecom">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+        </div>
+        <h4 data-i18n="sec-8-h">E-Ticaret &amp; Butik</h4><p data-i18n="sec-8-p">Sipariş takip, iade formu, ürün soruları</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ PRICING ══════════════════════ -->
+<section id="pricing" class="section bg2">
+  <div class="inner">
+    <div class="center fu" style="margin-bottom:48px">
+      <div class="tag" data-i18n="price-tag">Fiyatlar</div>
+      <h2 data-i18n="price-h2">Şeffaf,<br><em>sürprizsiz</em> fiyatlandırma</h2>
+      <p class="sec-desc" data-i18n="price-desc">Gizli ücret yok. Kurulum ücreti yok. Her paketle tam destek.</p>
+    </div>
+
+    <!-- Monthly / Yearly Toggle -->
+    <div class="price-toggle-wrap fu">
+      <div class="price-toggle">
+        <button class="tog-btn active" id="tog-monthly" data-i18n="tog-monthly">Aylık</button>
+        <button class="tog-btn" id="tog-yearly">
+          <span data-i18n="tog-yearly">Yıllık</span>
+          <span class="save-badge" data-i18n="tog-save">%20 İndirim</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="price-grid">
+      <!-- Starter -->
+      <div class="price-card fu">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">
+          <span class="plan-amt js-price" data-monthly="$49" data-yearly="$39">$49</span>
+          <span class="plan-per" data-i18n="plan-per">/mo</span>
+        </div>
+        <div class="plan-yearly-note js-yearly-note" data-i18n="plan-1-yearly">$470/yr · $118 tasarruf</div>
+        <div class="plan-div"></div>
+        <ul class="plan-feats">
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-1-f1">WhatsApp Business API kurulumu</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-1-f2">Sık sorulan müşteri sorularına otomatik yanıtlar</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-1-f3">WhatsApp üzerinden rezervasyon ve talep formları</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-1-f4">Müşteri ve rezervasyon paneli</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-1-f5">Tek işletme konumu için bir WhatsApp numarası</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-1-f6">Standart kurulum desteği ve e-posta desteği</span></li>
+        </ul>
+        <a href="#contact" class="plan-cta cta-ol" data-i18n="plan-cta">Demo İste</a>
+      </div>
+
+      <!-- Growth -->
+      <div class="price-card pop fu">
+        <div class="pop-badge" data-i18n="plan-2-badge">En Popüler</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-price">
+          <span class="plan-amt js-price" data-monthly="$99" data-yearly="$79">$99</span>
+          <span class="plan-per" data-i18n="plan-per">/mo</span>
+        </div>
+        <div class="plan-yearly-note js-yearly-note" data-i18n="plan-2-yearly">$950/yr · $238 tasarruf</div>
+        <div class="plan-div"></div>
+        <ul class="plan-feats">
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-2-f1">Starter paketindeki her şey</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-2-f2">İşletmenize, hizmetlerinize ve fiyatlarınıza özel AI yanıtları</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-2-f3">Kişiselleştirilmiş rezervasyon onayları ve hatırlatmalar</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-2-f4">Ziyaret sonrası kişiselleştirilmiş geri bildirim talepleri</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-2-f5">Menü, hizmet, broşür ve fiyat listelerinin otomatik paylaşımı</span></li>
+        </ul>
+        <a href="#contact" class="plan-cta cta-fi" data-i18n="plan-cta">Demo İste</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="price-card fu">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">
+          <span class="plan-amt js-price" data-monthly="$199" data-yearly="$159">$199</span>
+          <span class="plan-per" data-i18n="plan-per">/mo</span>
+        </div>
+        <div class="plan-yearly-note js-yearly-note" data-i18n="plan-3-yearly">$1.910/yr · $478 tasarruf</div>
+        <div class="plan-div"></div>
+        <ul class="plan-feats">
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-3-f1">Growth paketindeki her şey</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-3-f2">Kişiselleştirilmiş teklifler ve kampanyalar</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-3-f3">Gelişmiş müşteri hedefleme</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-3-f4">Önceki ziyaret veya hizmetlere göre takip mesajları</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-3-f5">Özel formlar ve müşteri bilgi alanları</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-3-f6">Birebir kurulum desteği</span></li>
+          <li class="plan-feat"><span class="pf-chk">✓</span><span data-i18n="plan-3-f7">Öncelikli destek</span></li>
+        </ul>
+        <a href="#contact" class="plan-cta cta-dk" data-i18n="plan-cta">Demo İste</a>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:28px;font-size:14px;color:var(--text2)" data-i18n="price-note">
+      7 günlük ücretsiz deneme &nbsp;·&nbsp; Kredi kartı gerekmez &nbsp;·&nbsp; İstediğin zaman iptal
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════ CONTACT ══════════════════════ -->
+<section id="contact" class="section dark">
+  <div class="inner">
+    <div class="contact-layout">
+      <div class="contact-left">
+        <div class="tag" style="color:var(--orange)" data-i18n="contact-tag">İletişim</div>
+        <h2 data-i18n="contact-h2">Demo isteyin,<br><em>sistemi</em> görün</h2>
+        <p data-i18n="contact-p">15 dakikalık canlı demoda kendi işletmenize özel kurulu sistemi görün. Hiçbir ücret veya taahhüt olmadan.</p>
+        <div class="channels">
+          <a href="#cform" class="channel">
+            <div class="ch-icon">💬</div>
+            <div><div class="ch-lbl" data-i18n="ch-demo-lbl">Demo</div><div class="ch-val" data-i18n="ch-demo-val">Tanışalım</div></div>
+          </a>
+          <a href="mailto:hello@conzy.nl" class="channel">
+            <div class="ch-icon">✉️</div>
+            <div><div class="ch-lbl" data-i18n="ch-email-lbl">E-posta</div><div class="ch-val">hello@conzy.nl</div></div>
+          </a>
+        </div>
+        <div class="reply-box">
+          <div class="reply-lbl" data-i18n="reply-lbl">🕐 Yanıt süresi</div>
+          <div class="reply-val" data-i18n="reply-val">İş günleri 2 saat içinde</div>
+          <div class="reply-sub" data-i18n="reply-sub">Hafta sonu formlar Pazartesi yanıtlanır</div>
+        </div>
+      </div>
+
+      <div>
+        <form class="cform" id="cform" onsubmit="handleSubmit(event)">
+          <div class="frow">
+            <div class="fg"><label class="flbl" data-i18n="form-name-lbl">Ad Soyad *</label><input class="finp" type="text" name="name" placeholder="Ahmet Yılmaz" data-i18n-ph="form-name-ph" required></div>
+            <div class="fg"><label class="flbl" data-i18n="form-phone-lbl">WhatsApp Numarası *</label><input class="finp" type="tel" name="phone" placeholder="+90 532 000 00 00" data-i18n-ph="form-phone-ph" required></div>
+          </div>
+          <div class="fg"><label class="flbl" data-i18n="form-email-lbl">E-posta</label><input class="finp" type="email" name="email" placeholder="ahmet@sirket.com" data-i18n-ph="form-email-ph"></div>
+          <div class="fg">
+            <label class="flbl" data-i18n="form-sector-lbl">İşletme Türü *</label>
+            <select class="fsel" name="sector" required>
+              <option value="" disabled selected>Seçiniz...</option>
+              <option>Özel Klinik / Hastane</option>
+              <option>Güzellik &amp; Estetik Merkezi</option>
+              <option>Saç Ekimi Kliniği</option>
+              <option>Otomotiv Servisi</option>
+              <option>Gayrimenkul Ofisi</option>
+              <option>Hukuk Bürosu / Danışmanlık</option>
+              <option>Eğitim Kurumu</option>
+              <option>E-Ticaret / Butik</option>
+              <option>Diğer</option>
+            </select>
+          </div>
+          <div class="fg"><label class="flbl" data-i18n="form-msg-lbl">Mesajınız</label><textarea class="ftxt" name="message" placeholder="İşletmeniz ve ihtiyaçlarınız hakkında kısaca bilgi verin..." data-i18n-ph="form-msg-ph"></textarea></div>
+          <button type="submit" class="btn btn-orange" style="width:100%;justify-content:center;padding:16px 28px;font-size:15px;border-radius:var(--r)" data-i18n="form-submit">
+            Demo İste — Ücretsiz →
+          </button>
+        </form>
+        <div class="f-success" id="f-success">
+          <div class="f-success-icon">✅</div>
+          <h3 data-i18n="success-h">Mesajınız alındı!</h3>
+          <p data-i18n="success-p">2 iş saati içinde WhatsApp veya e-posta ile geri dönüyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="color:#fff"><div class="logo-mark"></div>Conzy</a>
+        <p data-i18n="footer-brand-p">WhatsApp chatbot ve Flow otomasyonu. Yapay zeka destekli müşteri iletişimi.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="fc">
+          <div class="fc-title" data-i18n="footer-p-title">Ürün</div>
+          <a href="#flow-pipeline" data-i18n="footer-p-feat">Özellikler</a>
+          <a href="#pricing" data-i18n="footer-p-price">Fiyatlar</a>
+          <a href="#sectors" data-i18n="footer-p-sec">Sektörler</a>
+        </div>
+        <div class="fc">
+          <div class="fc-title" data-i18n="footer-c-title">İletişim</div>
+          <a href="mailto:hello@conzy.nl">hello@conzy.nl</a>
+          <a href="#contact" data-i18n="footer-c-demo">Demo İste</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span data-i18n="footer-copy">© 2026 Conzy. Tüm hakları saklıdır.</span>
+      <span data-i18n="footer-privacy">KVKK &amp; Gizlilik</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=dashboard-preview-11" defer></script>
+<script src="js/i18n.js?v=dashboard-preview-11" defer></script>
+</body>
+</html>
