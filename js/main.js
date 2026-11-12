@@ -839,7 +839,7 @@ window.handleSubmit = async function(e) {
 
   const w3fd = new FormData();
   w3fd.append('access_key', '71af3b49-80a6-4864-a8ec-c227be023cb7');
-  w3fd.append('to_email',   'hello@conzy.nl');
+  w3fd.append('to_email',   'hello@getconzy.com');
   w3fd.append('subject',    `Yeni Demo Talebi — ${fd.get('name')}`);
   w3fd.append('from_name',  'Conzy Website');
   w3fd.append('name',       fd.get('name')    || '');
