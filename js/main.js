@@ -451,8 +451,8 @@ class HeroPhone {
     });
     document.querySelector('.demo-replay').addEventListener('click', () => this.goTo(0));
     document.querySelector('.hero-screen-area').addEventListener('click',event => {
-      if (event.target.closest('.wa-card-action')) this.goTo(1);
-      if (event.target.closest('.flow-close')) this.goTo(0);
+      if (event.target.closest('.wa-card-action')) this.openBookingFlow();
+      if (event.target.closest('.flow-close')) this.closeBookingFlow();
       if (event.target.closest('.flow-btn-gr')) this.goTo(2);
     });
   }
@@ -477,11 +477,46 @@ class HeroPhone {
 
   schedule() {
     if (this.paused || !this.demoVisible) return;
-    this.nextTimer = setTimeout(() => this.goTo((this.current+1) % this.screens.length),this.durations[this.current]);
+    this.nextTimer = setTimeout(() => this.current === 0 ? this.openBookingFlow() : this.goTo((this.current+1) % this.screens.length),this.durations[this.current]);
+  }
+
+  openBookingFlow() {
+    if (this.current !== 0 || this.openingFlow) return;
+    this.clearTimers();
+    this.openingFlow = true;
+    const button = this.screens[0].querySelector('.wa-card-action');
+    button?.classList.add('is-opening');
+    button?.setAttribute('aria-busy','true');
+    this.after(prefersReducedMotion ? 0 : 320, () => {
+      this.goTo(1);
+      this.screens[0].classList.add('flow-backdrop');
+      this.screens[1].classList.add('flow-opening');
+      this.after(450, () => this.screens[1].querySelector('.flow-close')?.focus({preventScroll:true}));
+    });
+  }
+
+  closeBookingFlow() {
+    this.goTo(0);
+    // Closing a Flow returns to the same conversation, without sending a reply.
+    this.clearTimers();
+    const screen = this.screens[0];
+    screen.querySelectorAll('[data-chat]').forEach(message => message.classList.add('show'));
+    screen.querySelectorAll('.wa-ticks').forEach(ticks => { ticks.textContent = '✓✓'; ticks.classList.add('read'); });
+    const input = screen.querySelector('.wa-inp');
+    input.textContent = window.currentLang === 'en' ? 'Message' : 'Mesaj';
+    input.classList.remove('is-typing');
+    this.setTyping(screen,false);
+    this.scrollChat(screen);
+    screen.querySelector('.wa-card-action')?.focus({preventScroll:true});
+    // Leave the conversation ready to reopen instead of immediately replaying it.
   }
 
   goTo(index) {
     this.clearTimers();
+    this.openingFlow = false;
+    this.screens.forEach(screen => screen.classList.remove('flow-backdrop','flow-opening'));
+    this.screens[0].querySelector('.wa-card-action')?.classList.remove('is-opening');
+    this.screens[0].querySelector('.wa-card-action')?.removeAttribute('aria-busy');
     this.screens.forEach(screen => screen.classList.remove('active','exiting'));
     this.current = index;
     this.activate(index);
@@ -578,7 +613,7 @@ class HeroPhone {
         <div class="wa-day">${isEn ? 'Today' : 'Bugün'}</div>
         <div class="wa-encrypted">${isEn ? 'End to end encrypted · Illustrative demo' : 'Uçtan uca şifreli · Örnek demo'}</div>
         <div class="msg msg-o" data-chat="request"><span>${request}</span><div class="msg-t">19:02 <span class="wa-ticks">✓</span></div></div>
-        <div class="msg msg-i wa-booking-card" data-chat="form"><div class="wa-card-icon">▦</div><strong>${d.formTitle}</strong><p>${isEn ? 'Add your details and confirm your booking, right here.' : 'Bilgilerinizi ekleyin ve burada onaylayın.'}</p><button type="button" class="wa-card-action">${isEn ? 'Complete booking' : 'Rezervasyonu tamamla'} <span><svg class="inline-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></button><div class="msg-t">19:03</div></div>
+        <div class="msg msg-i wa-booking-card" data-chat="form"><strong>${d.formTitle}</strong><p>${restaurant ? (isEn ? 'Choose your date, time and number of guests to request a table.' : 'Masa talebi için tarih, saat ve kişi sayısını seçin.') : (isEn ? 'Choose a date and time, then add your booking details.' : 'Tarih ve saat seçip randevu bilgilerinizi ekleyin.')}</p><div class="wa-flow-caption">${isEn ? 'Complete the form in WhatsApp' : 'Formu WhatsApp içinde doldurun'}</div><div class="msg-t">19:03</div><button type="button" class="wa-card-action"><svg class="wa-flow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span>${isEn ? 'Complete booking' : 'Rezervasyonu tamamla'}</span><i class="wa-flow-spinner" aria-hidden="true"></i></button></div>
         <div class="typing-bubble wa-typing" aria-hidden="true"><i class="t-dot"></i><i class="t-dot"></i><i class="t-dot"></i></div>`,isEn);
     }
 
@@ -609,7 +644,7 @@ class HeroPhone {
       <div class="msg msg-i wa-confirmed" data-chat="confirmed"><strong>✓ ${restaurant ? (isEn ? 'Your table is confirmed!' : 'Masanız onaylandı!') : (isEn ? 'Your booking is confirmed!' : 'Randevunuz onaylandı!')}</strong><div class="wa-booking-summary"><b>${name}</b><span>${d.service}</span><span>${d.dates[1][0]} ${d.dates[1][1]} · ${d.times[1]}</span></div><p>${isEn ? 'We look forward to welcoming you.' : 'Sizi ağırlamayı bekliyoruz.'}</p><div class="msg-t">19:04</div></div>
       <div class="msg msg-i" data-chat="followup">${isEn ? 'Need to change anything? Just reply to this chat.' : 'Değişiklik mi gerekiyor? Bu sohbete yazmanız yeterli.'}<div class="msg-t">19:04</div></div>
       ${restaurant ? `<div class="msg msg-i" data-chat="menu-intro">${isEn ? 'You can see our menu in the meantime!' : 'Bu arada menümüzü inceleyebilirsiniz!'}<div class="msg-t">19:05</div></div>
-      <div class="msg msg-i wa-document" data-chat="menu-pdf"><a class="wa-document-link" href="assets/restaurant-menu-demo.pdf" target="_blank" rel="noopener" aria-label="${isEn ? 'Open sample restaurant menu PDF' : 'Örnek restoran menüsü PDF dosyasını aç'}"><span class="wa-pdf-icon">PDF</span><span class="wa-document-info"><strong>${isEn ? 'Restaurant menu.pdf' : 'Restoran menüsü.pdf'}</strong><small>${isEn ? '1 page · PDF · Sample menu' : '1 sayfa · PDF · Örnek menü'}</small></span><span class="wa-document-download" aria-hidden="true">↓</span></a><div class="msg-t">19:05</div></div>` : ''}
+      <div class="msg msg-i wa-document" data-chat="menu-pdf"><a class="wa-document-link" href="/assets/restaurant-menu-demo.pdf" target="_blank" rel="noopener" aria-label="${isEn ? 'Open sample restaurant menu PDF' : 'Örnek restoran menüsü PDF dosyasını aç'}"><span class="wa-pdf-icon">PDF</span><span class="wa-document-info"><strong>${isEn ? 'Restaurant menu.pdf' : 'Restoran menüsü.pdf'}</strong><small>${isEn ? '1 page · PDF · Sample menu' : '1 sayfa · PDF · Örnek menü'}</small></span><span class="wa-document-download" aria-hidden="true">↓</span></a><div class="msg-t">19:05</div></div>` : ''}
       <div class="typing-bubble wa-typing" aria-hidden="true"><i class="t-dot"></i><i class="t-dot"></i><i class="t-dot"></i></div>`,isEn)}</div>`;
     const note = document.querySelector('.note-top strong');
     if (note) note.textContent = key === 'restoran' ? (isEn ? 'Table reserved' : 'Masa rezerve edildi') : (isEn ? 'Booking confirmed' : 'Randevu onaylandı');
@@ -693,7 +728,7 @@ class HeroPhone {
     this.after(2000,()=>this.sendMessage(screen,'request'));
     this.after(2800,()=>this.setTyping(screen,true));
     this.after(4500,()=> { this.setTyping(screen,false); this.revealMessage(screen,'form'); });
-    this.after(7000,()=>screen.querySelector('.wa-card-action')?.classList.add('tap-demo'));
+    // Opening is demonstrated by the same button interaction used by visitors.
   }
 
   runConfirmationSequence(screen) {

@@ -43,8 +43,8 @@ const LANGS = {
     'scene-sync': 'Takvim otomatik güncellendi',
     'scene-online': 'Müşterilerinizin hep yanında',
     'scene-hours': 'Mesai saatleri dışında bile.',
-    'page-title'      : 'Conzy, WhatsApp Otomasyon Sistemi',
-    'meta-desc'       : 'Yapay zeka destekli WhatsApp chatbot ve otomasyon sistemi. Klinikler, salonlar ve işletmeler için 7/24 otomatik müşteri yönetimi.',
+    'page-title'      : 'Conzy | İşletmeler için Yapay Zeka WhatsApp Asistanı',
+    'meta-desc'       : 'Conzy, WhatsApp üzerinden müşteri sorularını yanıtlar, rezervasyonları yönetir ve kişiselleştirilmiş takip mesajları gönderir. Demoyu ve paketleri inceleyin.',
     'nav-features'    : 'Özellikler',
     'nav-sectors'     : 'Sektörler',
     'nav-pricing'     : 'Fiyatlar',
@@ -228,7 +228,7 @@ const LANGS = {
     'form-submit'     : 'Contact Us! Get Your Free Demo →',
     'success-h'       : 'Mesajınız alındı!',
     'success-p'       : '2 iş saati içinde WhatsApp veya e-posta ile geri dönüyoruz.',
-    'footer-brand-p'  : 'WhatsApp chatbot ve otomasyon sistemi. Yapay zeka destekli müşteri iletişimi.',
+    'footer-brand-p'  : 'Conzy, müşteri soruları, rezervasyonlar ve kişiselleştirilmiş takip mesajları için işletmenizin yapay zeka WhatsApp asistanıdır.',
     'footer-p-title'  : 'Ürün',
     'footer-p-feat'   : 'Özellikler',
     'footer-p-price'  : 'Fiyatlar',
@@ -314,8 +314,8 @@ const LANGS = {
     'scene-sync': 'Calendar updated automatically',
     'scene-online': 'Always here for your customers',
     'scene-hours': 'Even after closing time.',
-    'page-title'      : 'Conzy, WhatsApp Automation System',
-    'meta-desc'       : 'AI powered WhatsApp chatbot and automation system. 24/7 automated customer management for clinics, salons, and businesses.',
+    'page-title'      : 'Conzy | AI WhatsApp Assistant for Business',
+    'meta-desc'       : 'Conzy helps your business answer customer questions, manage bookings and send personalised follow ups through WhatsApp. See the demo and explore our plans.',
     'nav-features'    : 'Features',
     'nav-sectors'     : 'Sectors',
     'nav-pricing'     : 'Pricing',
@@ -499,7 +499,7 @@ const LANGS = {
     'form-submit'     : 'Contact Us! Get Your Free Demo →',
     'success-h'       : 'Message received!',
     'success-p'       : 'We\'ll get back to you within 2 business hours via WhatsApp or email.',
-    'footer-brand-p'  : 'WhatsApp chatbot and automation system. AI powered customer communication.',
+    'footer-brand-p'  : 'Conzy is an AI WhatsApp assistant for business enquiries, bookings and personalised customer follow ups.',
     'footer-p-title'  : 'Product',
     'footer-p-feat'   : 'Features',
     'footer-p-price'  : 'Pricing',
@@ -548,12 +548,19 @@ const LANGS = {
 };
 
 /* ─── Core ─────────────────────────────────────────────────── */
-let currentLang = localStorage.getItem('conzy-lang') || 'en';
+let currentLang = document.documentElement.dataset.initialLang || (/^\/tr(?:\/|$)/.test(window.location.pathname) ? 'tr' : 'en');
 window.currentLang = currentLang;
 
 function t(key) { return LANGS[currentLang][key] ?? LANGS.tr[key] ?? key; }
 
 function applyLang(lang) {
+  if (lang !== 'en' && lang !== 'tr') return;
+  const targetPath = lang === 'tr' ? '/tr/' : '/';
+  const currentPath = window.location.pathname.replace(/index\.html$/, '');
+  if (currentPath !== targetPath) {
+    window.location.assign(targetPath + window.location.hash);
+    return;
+  }
   currentLang = lang;
   window.currentLang = lang;
   localStorage.setItem('conzy-lang', lang);
@@ -603,7 +610,7 @@ function applyLang(lang) {
 
   /* Dashboard screenshots and their full-size links follow the page language. */
   document.querySelectorAll('[data-dashboard-image]').forEach(image => {
-    const source = `assets/dashboard-${image.dataset.dashboardImage}-${lang}.svg`;
+    const source = `/assets/dashboard-${image.dataset.dashboardImage}-${lang}.svg`;
     image.src = source;
     image.closest('a').href = source;
   });
@@ -672,6 +679,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     menu.querySelectorAll('.lang-opt').forEach(opt => {
       opt.addEventListener('click', e => {
+        e.preventDefault();
         e.stopPropagation();
         applyLang(opt.dataset.lang);
         menu.classList.remove('open');
@@ -691,6 +699,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileLangMenu) {
     mobileLangMenu.querySelectorAll('.lang-opt').forEach(opt => {
       opt.addEventListener('click', e => {
+        e.preventDefault();
         e.stopPropagation();
         applyLang(opt.dataset.lang);
         mobileLangMenu.classList.remove('open');

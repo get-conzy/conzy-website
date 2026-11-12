@@ -778,11 +778,11 @@ h1 { text-align:center; }
 .note-icon .inline-arrow { display:block; }
 /* A matching edge glow for the header CTA. */
 #nav .nav-cta {
- border:1px solid rgba(188,223,151,.65);
- box-shadow:0 0 0 1px rgba(208,235,178,.3),0 0 15px rgba(133,179,85,.3),inset 0 0 8px rgba(195,226,157,.1);
+ border:1px solid rgba(200,244,151,.95);
+ box-shadow:0 0 0 2px rgba(190,235,140,.65),0 0 13px rgba(153,210,94,.8),0 0 30px rgba(133,179,85,.55),inset 0 0 12px rgba(195,226,157,.22);
 }
-#nav .nav-cta:hover { box-shadow:0 0 0 1px rgba(208,235,178,.6),0 0 22px rgba(133,179,85,.45),inset 0 0 10px rgba(195,226,157,.14); }
-.header-on-dark #nav .nav-cta { box-shadow:0 0 0 1px rgba(215,244,181,.6),0 0 20px rgba(191,224,143,.3); }
+#nav .nav-cta:hover { box-shadow:0 0 0 2px rgba(210,255,164,.9),0 0 18px rgba(153,210,94,.95),0 0 38px rgba(133,179,85,.7),inset 0 0 14px rgba(195,226,157,.28); }
+.header-on-dark #nav .nav-cta { box-shadow:0 0 0 2px rgba(215,244,181,.8),0 0 16px rgba(191,224,143,.8),0 0 34px rgba(191,224,143,.5); }
 #hero { padding-top:124px; }
 @media(max-width:768px) {
  #hero { padding-top:100px; }
@@ -796,3 +796,34 @@ h1 { text-align:center; }
  .hero-tag { flex-shrink:0; }
  .hero-inner { gap:38px; }
 }
+
+/* Language navigation remains usable when JavaScript is disabled. */
+.lang-opt { text-decoration:none; }
+
+/* A WhatsApp Flow opens inside the conversation, rather than replacing it. */
+.hero-screen-area .wa-booking-card { overflow:hidden;padding-bottom:0; }
+.wa-flow-caption { color:#7a8580;font-size:11px;line-height:1.4;margin-top:9px; }
+.hero-screen-area .wa-booking-card .msg-t { margin:5px 0 8px;text-align:right; }
+.hero-screen-area button.wa-card-action { display:flex;align-items:center;justify-content:center;gap:8px;width:calc(100% + 22px);margin:0 -11px;padding:12px 10px;min-height:46px;border-top:1px solid #e6ebe7;border-radius:0;box-shadow:none;color:#008069;background:transparent;transition:background 150ms; }
+.hero-screen-area .wa-card-action span { float:none; }
+.wa-flow-icon { flex-shrink:0; }
+.hero-screen-area button.wa-card-action:hover,.hero-screen-area button.wa-card-action.is-opening { background:#edf5f1; }
+.wa-card-action:focus-visible,.flow-close:focus-visible { outline:2px solid #008069;outline-offset:-3px; }
+.wa-flow-spinner { display:none;width:15px;height:15px;border:2px solid #00806935;border-top-color:#008069;border-radius:50%;animation:wa-flow-spin 650ms linear infinite; }
+.is-opening .wa-flow-spinner { display:block; }
+.is-opening .wa-flow-icon { display:none; }
+.hero-screen-area #pscreen-0.flow-backdrop { opacity:1;pointer-events:none;animation:none;filter:brightness(.72); }
+.hero-screen-area #pscreen-1.flow-opening { z-index:3;animation:wa-flow-open 400ms cubic-bezier(.2,.75,.25,1) both;box-shadow:0 -12px 32px #0003; }
+@keyframes wa-flow-open { from { transform:translateY(100%);opacity:1; } to { transform:translateY(0);opacity:1; } }
+@keyframes wa-flow-spin { to { transform:rotate(360deg); } }
+@media(prefers-reduced-motion:reduce) {
+ .hero-screen-area #pscreen-1.flow-opening { animation:none; }
+ .wa-flow-spinner { animation:none; }
+}
+
+/* Keep the headline in two lines and industry choices in one responsive row. */
+.hero-copy { container-type:inline-size; }
+#hero h1 { white-space:nowrap;font-size:clamp(16px,8.5cqi,72px);line-height:1.1; }
+.hero-visual .hero-sector-tabs { container-type:inline-size; }
+.hero-visual .sector-tabs-row { display:flex;flex-wrap:nowrap;justify-content:space-between;column-gap:clamp(3px,1.5cqi,18px);width:100%; }
+.hero-visual .sector-tab { flex:0 1 auto;min-width:0;white-space:nowrap;font-size:clamp(8px,4cqi,14px);letter-spacing:-.015em; }
