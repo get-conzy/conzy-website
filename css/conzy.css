@@ -828,3 +828,12 @@ h1 { text-align:center; }
 .hero-visual .hero-sector-tabs { container-type:inline-size; }
 .hero-visual .sector-tabs-row { display:flex;flex-wrap:nowrap;justify-content:center;column-gap:clamp(3px,1.5cqi,18px);width:max-content;max-width:100%;align-self:center; }
 .hero-visual .sector-tab { flex:0 1 auto;min-width:0;white-space:nowrap;font-size:clamp(8px,4cqi,14px);letter-spacing:-.015em; }
+
+/* Larger mobile headline, with one phrase per line. */
+@media(max-width:768px) {
+ #hero h1 { font-size:clamp(20px,10.5cqi,72px);white-space:nowrap; }
+ html[lang="en"] #hero h1 { font-size:clamp(20px,11.4cqi,72px); }
+ /* Industry labels: slightly smaller text, wider gaps so words don't touch. */
+ .hero-visual .sector-tabs-row { column-gap:clamp(8px,3.4cqi,20px); }
+ .hero-visual .sector-tab { font-size:clamp(8px,3.4cqi,12px); }
+}
